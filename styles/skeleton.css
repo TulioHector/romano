@@ -1,0 +1,23 @@
+.skeleton-title {
+    height: 30px;
+    width: 280px;
+    border-radius: 6px;
+    background: #E5E4E2;
+    margin-top: 10px;
+}
+
+.skeleton-description {
+    height: 30px;
+    width: 380px;
+    border-radius: 6px;
+    background: #E5E4E2;
+    margin-top: 10px;
+}
+
+.skeleton-powerby {
+    height: 30px;
+    width: 180px;
+    border-radius: 6px;
+    background: #E5E4E2;
+    margin-top: 10px;
+}
