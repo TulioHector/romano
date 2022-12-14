@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, appProps }) {
                 <Head>
                     <meta charSet="utf-8" />
                     <link rel="icon" href="/favicon.ico" />
-                    <meta name="google-site-verification" content="_CEGB1blc7j4nO9Axyzlkf-DPCWnRHCJOJXZN2FaKec" />
+                    <meta name="google-site-verification" content="dukoEJNsE9B8LQzeFGHXMIfD0OoVFGwb7tVr843WQyA" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
                     <meta name="HandheldFriendly" content="true" />
