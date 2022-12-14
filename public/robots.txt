@@ -1,5 +1,9 @@
-# https://romanohector.vercel.app/robotstxt.html
+# *
 User-agent: *
-Disallow: /assets
+Allow: /
 
-sitemap: https://romanohector.vercel.app/sitemap.xml
+# Host
+Host: https://romanohector.vercel.app/
+
+# Sitemaps
+Sitemap: https://romanohector.vercel.app/sitemap.xml
