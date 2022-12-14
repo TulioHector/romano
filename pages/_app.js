@@ -26,11 +26,10 @@ function MyApp({ Component, pageProps, appProps }) {
                     <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="true" />
                     
                     <title>Blog Hector Abraham Romano</title>
-                    <Script src="./scripts/gitpage.js" />
                 </Head>
                 <Component {...pageProps} {...appProps} />
             </Layout>
-            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-J121YJLNSF"/>            
+            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-QXP7TC03LZ"/>            
             <Script src='/scripts/analytics.js'/>
             <Script src="/template.js" />
         </>
