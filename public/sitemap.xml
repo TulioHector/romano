@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://romano.io/</loc>
+    <loc>https://romanohector.vercel.app/</loc>
     <lastmod>2022-11-22</lastmod>
   </url>
   <url>
-    <loc>https://romano.github.io/about</loc>
+    <loc>https://romanohector.vercel.app/about</loc>
     <lastmod>2022-11-22</lastmod>
   </url>
   <url>
-    <loc>https://romano.github.io/contact</loc>
+    <loc>https://romanohector.vercel.app/contact</loc>
     <lastmod>2022-11-22</lastmod>
   </url>
   <url>
-    <loc>https://romano.github.io/2022-10-20-arquitectura-evolutiva/arq-evolutiva.png</loc>
+    <loc>https://romanohector.vercel.app/2022-10-20-arquitectura-evolutiva/arq-evolutiva.png</loc>
     <lastmod>2022-10-20</lastmod>
   </url>
   <url>
-    <loc>https://romanor.github.io/</loc>
+    <loc>https://romanohector.vercel.app/post/2022-12-01-ADR-architecture-decision-records/3/</loc>
+    <lastmod>2022-12-01</lastmod>
+  </url>
+  <url>
+    <loc>https://romanohector.vercel.app/</loc>
     <lastmod>2022-11-22</lastmod>
   </url>
 </urlset>

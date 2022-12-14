@@ -1,5 +1,5 @@
-# https://romano.io/robotstxt.html
+# https://romanohector.vercel.app/robotstxt.html
 User-agent: *
 Disallow: /assets
 
-sitemap: https://romano.io/sitemap.xml
+sitemap: https://romanohector.vercel.app/sitemap.xml
