@@ -65,7 +65,7 @@ Por último, las funciones de aptitud se pueden caracterizar a través de distin
 
 A continuación, se muestra un ejemplo de cómo representar las funciones de aptitud de una arquitectura evolutiva.
 
-![](/assets/posts/2/fitnes-function.png)
+![](/assets/posts/2/fitnes-function.webp)
 
 El análisis previo de que función de aptitud debería existir en un sistema particular, proporciona direccionamiento en la toma de decisiones y su planificación en el tiempo. Las decisiones de arquitectura son evaluadas en relación con las funciones de aptitud de tal manera que podamos verificar que la arquitectura está evolucionando en la dirección correcta.
 
@@ -87,7 +87,7 @@ Uno de los factores que hay que tener en cuenta al momento de que se den cambios
 
 Dentro de un ecosistema de desarrollo de software este compuesto de herramientas, marcos de trabajo, bibliotecas y mejores prácticas: el estado del arte acumulado en el desarrollo de software. Este ecosistema forma un equilibrio, muy similar a un sistema biológico, que los desarrolladores pueden entender y construir cosas dentro del ecosistema. Sin embargo, este equilibrio es dinámico: constantemente aparecen cosas nuevas, que alteran inicialmente el equilibrio hasta que surge un nuevo equilibrio. Imagine a una persona caminando y transportando unas cajas de un punto a otro. Esto en física se lo conoce como equilibrio dinámico, por que la persona va a estar manteniendo un equilibrio al caminar, evitando obstáculos en su camino y/o eventos que puedan hacer perder el equilibrio y que las cajas se caigan.
 
-![](/assets/posts/2/balance.png)
+![](/assets/posts/2/balance.webp)
 
 En el ecosistema de desarrollo de software, cada innovación o practica puede alterar el statu quo, obligando a generar un nuevo equilibrio. Siguiendo el ejemplo anterior, seguimos cargando cajas a la persona que las transporta, obligándola a regenerar un nuevo equilibrio.
 

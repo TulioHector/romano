@@ -1,5 +1,7 @@
 
 /** @type {import('next').NextConfig} */
+const TerserPlugin = require('terser-webpack-plugin');
+
 const ContentSecurityPolicy = `
   default-src 'self';
   script-src  'self' 'unsafe-eval' 'unsafe-inline'  googletagmanager.com;
@@ -41,7 +43,25 @@ const nextConfig = {
     experimental: {
         appDir: false,
     },
-
+    webpack: (
+        config,
+        { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+    ) => {
+        //console.log(config);
+        config.optimization.minimizer.push(new TerserPlugin(
+            {
+                parallel: true,
+                extractComments: "all",
+                minify: TerserPlugin.esbuildMinify,
+                terserOptions: {
+                    minify: true,
+                    minifyWhitespace: true,
+                    minifyIdentifiers: false,
+                    minifySyntax: true,
+                },
+            }));
+        return config
+    },
     // async headers() {
     //     return [
     //         {
