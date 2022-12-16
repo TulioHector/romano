@@ -1,12 +1,19 @@
 'use client';
 
-import { Component, Suspense, lazy } from 'react';
+import { Component, Suspense } from 'react';
+import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
-import PageHeader from '../../components/PageHeader';
-import SeoHeader from '../../components/seoHeader';
 import Loading from '../../components/Loading';
 
-const List = lazy(() => import('./list'));
+const List = dynamic(() => import('./list'), {
+    ssr: false,
+  });
+const PageHeader = dynamic(() => import('../../components/PageHeader'), {
+    ssr: false,
+  });
+const SeoHeader = dynamic(() => import('../../components/seoHeader'), {
+    ssr: false,
+  });
 
 class Home extends Component {
     static contextType = PageContext;
@@ -20,7 +27,7 @@ class Home extends Component {
                 { property: "og:type", content: "website" },
                 { property: "og:title", content: "Blog – Technology" },
                 { property: "og:description", content: "Looking for " },
-                { property: "og:url", content: "https://tuliohector.github.io/" },
+                { property: "og:url", content: "https://romanohector.vercel.app/" },
                 { property: "og:site_name", content: "Hector Romano Blog" },
             ],
             headerTitle: "Blog – Technology",

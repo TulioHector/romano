@@ -1,8 +1,14 @@
 'use client';
 import { Component } from "react";
+import dynamic from 'next/dynamic';
 import { PageContext } from '../components/context';
-import PageHeader from "../components/PageHeader";
-import SeoHeader from "../components/seoHeader";
+
+const PageHeader = dynamic(() => import("../components/PageHeader"), {
+    ssr: false,
+  });
+const SeoHeader = dynamic(() => import("../components/seoHeader"), {
+    ssr: false,
+  });
 
 //https://codepen.io/WithAnEs/pen/abNGxX
 class NoPage extends Component {
@@ -21,7 +27,7 @@ class NoPage extends Component {
                 { property: "og:type", content: "website" },
                 { property: "og:title", content: "404 - Blog – Technology" },
                 { property: "og:description", content: "Looking for " },
-                { property: "og:url", content: "https://tuliohector.github.io/404" },
+                { property: "og:url", content: "https://romanohector.vercel.app/404" },
                 { property: "og:site_name", content: "Hector Romano Blog" },
             ],
             headerTitle: "Page Not Found 404",

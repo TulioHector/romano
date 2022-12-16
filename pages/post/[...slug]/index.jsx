@@ -1,17 +1,28 @@
 'use client';
 
 import { Component } from 'react';
-import Markdown from "markdown-to-jsx";
-import Code from "../../../components/Code";
-import { PageContext } from '../../../components/context';
+import dynamic from 'next/dynamic';
+import { PageContext,pageHeaderType } from '../../../components/context';
 import Database from '../../../components/Firebase';
-import PageHeader from '../../../components/PageHeader';
-import Head from "next/head";
 import Loading from '../../../components/Loading';
+
+const Markdown = dynamic(() => import("markdown-to-jsx"), {
+    ssr: false,
+});
+const Code = dynamic(() => import("../../../components/Code"), {
+    ssr: false,
+});
+const PageHeader = dynamic(() => import('../../../components/PageHeader'), {
+    ssr: false,
+});
+const SeoHeader = dynamic(() => import('../../../components/seoHeader'), {
+    ssr: false,
+});
 
 export async function getStaticProps({ params }) {
     const { slug } = params
     return {
+        revalidate: 1,
         props: { slug },
     };
 }
@@ -31,7 +42,7 @@ class Post extends Component {
     static idPost = 0;
     static postName = {};
 
-    constructor(props) {
+    constructor(props, context) {
         super(props);
         const slug = props.slug;
         this.idPost = slug[1];
@@ -41,9 +52,10 @@ class Post extends Component {
             isDark: true,
             setIsDark: (toogle) => {
                 this.setState({ isDark: toogle });
-            }
+            },
         }
         this.getTask = this.getTask.bind(this);
+        context.setPageSettings({headerType: pageHeaderType.Post, });
     }
 
     async getTask() {
@@ -65,17 +77,21 @@ class Post extends Component {
                 });
                 return post;
             }).catch(err => console.log(err));
-
-            let pageConfig = this.context.pageSettings;
-            const settings = {
-                ...pageConfig,
-                backgroundImage: `url('../../../assets/posts/${idPost}/${result.cover}')`,
-                pageTitle: "",
-                pageSubTitle: "",
-            }
-            this.context.setPageSettings(settings);
+                       
             this.setState({
-                postInfo: { ...result }
+                postInfo: { ...result },
+                headers: [
+                    { property: "og:locale", content: "es_AR" },
+                    { property: "og:type", content: "website" },
+                    { property: "og:title", content: result.Title },
+                    { property: "og:description", content: result.Description },
+                    { property: "og:url", content: `https://romanohector.vercel.app/post/${this.postName}/${this.idPost}` },
+                    { property: 'og:image', content: `https://romanohector.vercel.app/assets/posts/${this.idPost}/${result.cover}` },
+                    { property: "og:site_name", content: result.Author },
+                    { property: "canonical", content: `https://romanohector.vercel.app/post/${this.postName}/${this.idPost}` },
+                ],
+                headerTitle: result.Title,
+                description: result.Description + result.DatePublish
             });
             return result;
         } catch (error) {
@@ -85,8 +101,18 @@ class Post extends Component {
 
     async componentDidMount() {
         try {
-
-            await this.getTask();
+            const result = await this.getTask();
+            let pageConfig = this.context.pageSettings;
+            const settings = {
+                ...pageConfig,
+                backgroundImage: `url('../../../assets/posts/${this.idPost}/${result.cover}')`,
+                pageTitle: result.Title,
+                pageSubTitle: result.Description + result.DatePublis,
+                headerType: pageHeaderType.Post,
+                pageAuthor: result.Author,
+                pageDatePublish: result.DatePublish,
+            }
+            this.context.setPageSettings(settings); 
         } catch (error) {
             console.log(error);
         }
@@ -97,15 +123,7 @@ class Post extends Component {
             return (
                 <>
                     <PageHeader />
-                    <Head>
-                        <title>{this.postName}</title>
-                        <link rel="canonical" href={`https://tuliohector.github.io/posts/${this.postName}/${this.idPost}`} data-react-helmet="true" />
-                        <meta property="og:title" content={`${this.state.postInfo.Title}`} data-react-helmet="true" />
-                        <meta property="og:type" content="website" data-react-helmet="true" />
-                        <meta property="og:url" content={`https://tuliohector.github.io/posts/${this.postName}/${this.idPost}`} data-react-helmet="true" />
-                        <meta property="og:image" content={`https://tuliohector.github.io/assets/posts/${this.idPost}/${this.state.postInfo.cover}`} data-react-helmet="true" />
-                        <meta property='og:description' content={`${this.state.postInfo.description}`} />
-                    </Head>
+                    <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
                     <article className="mb-4">
                         <div className="container px-4 px-lg-5">
                             <div className="row gx-4 gx-lg-5 justify-content-center">

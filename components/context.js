@@ -1,10 +1,18 @@
 import {createContext, useState} from 'react';
-
+export const pageHeaderType = {
+    About: 'about',
+    Contact: 'contact',
+    Index: 'index',
+    Post: 'post'
+}
 export const pageConfig = {
     "backgroundImage": "url('assets/img/home-bg.jpg')",
     "pageTitle": "Architecture Blog",
     "pageSubTitle": "A Blog for architecture",
     "githubToken": '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',
+    headerType: pageHeaderType.Index,
+    pageAuthor: "",
+    pageDatePublish: "",
     "firebaseConfi": {
         apiKey: "AIzaSyBczw0vICVnVZcfrdYXW1DJTaAvbdhGR0M",
         authDomain: "blog-hector.firebaseapp.com",

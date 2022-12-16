@@ -7,6 +7,7 @@ import '../styles/Post.css';
 import '../styles/Code.css';
 import '../styles/notfound.css';
 import '../styles/loading.css';
+import '../styles/profile.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function MyApp({ Component, pageProps, appProps }) {
@@ -29,8 +30,8 @@ function MyApp({ Component, pageProps, appProps }) {
                 </Head>
                 <Component {...pageProps} {...appProps} />
             </Layout>
-            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-QXP7TC03LZ"/>            
-            <Script src='/scripts/analytics.js'/>
+            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-QXP7TC03LZ" />
+            <Script src='/scripts/analytics.js' />
             <Script src="/template.js" />
         </>
     )

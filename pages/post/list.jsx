@@ -1,9 +1,13 @@
 'use client';
 
 import { Component, Fragment, createRef } from "react";
+import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
 import Database from '../../components/Firebase';
-import InfiniteScroll from 'react-infinite-scroll-component';
+
+const InfiniteScroll = dynamic(() => import('react-infinite-scroll-component'), {
+    ssr: false,
+  });
 
 class List extends Component {
     static contextType = PageContext;
