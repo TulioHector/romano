@@ -6,7 +6,7 @@ export const pageHeaderType = {
     Post: 'post'
 }
 export const pageConfig = {
-    "backgroundImage": "url('assets/img/home-bg.jpg')",
+    "backgroundImage": "url('assets/img/home-bg.webp')",
     "pageTitle": "Architecture Blog",
     "pageSubTitle": "A Blog for architecture",
     "githubToken": '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',

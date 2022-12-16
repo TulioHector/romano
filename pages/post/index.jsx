@@ -33,7 +33,7 @@ class Home extends Component {
                 { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
                 { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
                 { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
-                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.png' },
+                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.webp' },
             ],
             headerTitle: "Blog – Technology",
             description: "Blog about Technology and architecture"

@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps, appProps }) {
             <Layout>
                 <Head>
                     <meta charSet="utf-8" />
-                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="shortcut icon" href="/favicon.ico" />
                     <meta name="google-site-verification" content="dukoEJNsE9B8LQzeFGHXMIfD0OoVFGwb7tVr843WQyA" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />

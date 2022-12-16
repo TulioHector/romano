@@ -7,10 +7,6 @@ const SeoHeader = (metatags) => {
             <title>{metatags.title}</title>
             <meta name="description" content={metatags.description} />
             <meta name="author" content="Hector Abraham Romano" />
-            {/* <meta itemProp="creator" content="Hector Abraham Romano" />
-            <meta itemProp="name" content="Blog Hector Abraham Romano" />
-            <meta itemProp="description" content="Blog for solutions and software architecture" />
-            <meta itemProp="image" content="/assets/img/tito-avatar.png" /> */}
             {
                 metatags.metatags.map((item, i) => {
                     switch (item.property) {

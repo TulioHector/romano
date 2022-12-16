@@ -5,8 +5,6 @@ import dynamic from 'next/dynamic';
 import PageContextProvider from '../components/context';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
 const Navigation = dynamic(() => import('../components/Navigation'), {
     ssr: false,
 });
@@ -19,8 +17,7 @@ class Layout extends Component {
         return (
             <>
                 <Navigation />
-                <PageContextProvider>
-                    
+                <PageContextProvider>                    
                     {this.props.children}
                 </PageContextProvider>
                 <Footer />

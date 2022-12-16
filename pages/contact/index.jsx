@@ -18,7 +18,7 @@ class ContactMe extends Component {
     constructor(props, context) {
         super(props);
         let pageConfig = context.pageSettings;
-        pageConfig.backgroundImage = "url('../assets/img/contact-bg.jpg')";
+        pageConfig.backgroundImage = "url('../assets/img/contact-bg.webp')";
         pageConfig.pageTitle = "Contact Me";
         pageConfig.pageSubTitle = "Contact with me";
         pageConfig.headerType = pageHeaderType.Contact;
@@ -35,7 +35,7 @@ class ContactMe extends Component {
                 { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
                 { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
                 { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
-                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.png' },
+                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.webp' },
             ],
             headerTitle: "Blog – Technology / Contact me",
             description: "Blog about Technology and architecture-> Contact me"
@@ -60,7 +60,7 @@ class ContactMe extends Component {
                                                     <div className="card">
                                                         <div className="card-body">
                                                             <div className="d-flex flex-column align-items-center text-center">
-                                                                <Image itemProp="image" src="/assets/img/tito-avatar.png" alt="Hector Abraham Romano" className="rounded-circle" width={150} height={150} />
+                                                                <Image itemProp="image" src="/assets/img/tito-avatar.webp" alt="Hector Abraham Romano" className="rounded-circle" width={150} height={150} />
                                                                 <div className="mt-3">
                                                                     <h4 itemProp="name">Hector</h4>
                                                                     <p className="text-secondary mb-1" itemProp="jobTitle">Solution Architect</p>
@@ -68,7 +68,6 @@ class ContactMe extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                                 <div className="col-md-8">
                                                     <div className="card mb-3">
@@ -92,7 +91,6 @@ class ContactMe extends Component {
                                                                     <span itemProp="addressRegion"> Argentina, AR</span>
                                                                 </div>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>

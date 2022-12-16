@@ -29,17 +29,7 @@ class HeaderTypeToRender extends Component {
                     </>
                 );
             case 'contact':
-                console.log("contact");
-                return (
-                    <>
-                    <div className="page-heading">
-                        <h1>{pageSettings.pageTitle}</h1>
-                        <span className="subheading">{pageSettings.pageSubTitle}</span>
-                    </div>
-                    </>
-                );
             case 'about':
-                console.log("about");
                 return (
                     <>
                     <div className="page-heading">
@@ -49,7 +39,6 @@ class HeaderTypeToRender extends Component {
                     </>
                 );
             default:
-                console.log("index");
                 return (
                     <>
                     <div className="site-heading">

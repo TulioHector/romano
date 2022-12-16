@@ -17,7 +17,7 @@ class About extends Component {
     constructor(props, context) {
         super(props);
         let pageConfig = context.pageSettings;
-        pageConfig.backgroundImage = "url('../assets/img/about-bg.jpg')";
+        pageConfig.backgroundImage = "url('../assets/img/about-bg.webp')";
         pageConfig.pageTitle = "About Me";
         pageConfig.pageSubTitle = "";
         pageConfig.headerType = pageHeaderType.About;
@@ -34,7 +34,7 @@ class About extends Component {
                 { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
                 { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
                 { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
-                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.png' },
+                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.webp' },
             ],
             headerTitle: "Blog – Technology / About me",
             description: "Blog about Technology and architecture-> About me"
