@@ -32,6 +32,10 @@ class ContactMe extends Component {
                 { property: "og:url", content: "https://romanohector.vercel.app/contact" },
                 { property: "og:site_name", content: "Hector Romano Blog" },
                 { property: "canonical", content: `https://romanohector.vercel.app/contact` },
+                { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
+                { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
+                { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
+                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.png' },
             ],
             headerTitle: "Blog – Technology / Contact me",
             description: "Blog about Technology and architecture-> Contact me"

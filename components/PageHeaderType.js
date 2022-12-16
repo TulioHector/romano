@@ -22,7 +22,7 @@ class HeaderTypeToRender extends Component {
                         <h2 className="subheading">{pageSettings.pageSubTitle}</h2>
                         <span className="meta">
                             Posted by&nbsp;
-                            <a href="#!">{pageSettings.pageAuthor}</a>
+                            <a href="#!">{pageSettings.pageAuthor}&nbsp;</a>
                             on&nbsp;{pageSettings.pageDatePublish}
                         </span>
                     </div>

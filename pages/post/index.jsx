@@ -7,13 +7,13 @@ import Loading from '../../components/Loading';
 
 const List = dynamic(() => import('./list'), {
     ssr: false,
-  });
+});
 const PageHeader = dynamic(() => import('../../components/PageHeader'), {
     ssr: false,
-  });
+});
 const SeoHeader = dynamic(() => import('../../components/seoHeader'), {
     ssr: false,
-  });
+});
 
 class Home extends Component {
     static contextType = PageContext;
@@ -29,6 +29,11 @@ class Home extends Component {
                 { property: "og:description", content: "Looking for " },
                 { property: "og:url", content: "https://romanohector.vercel.app/" },
                 { property: "og:site_name", content: "Hector Romano Blog" },
+                { property: "canonical", content: `https://romanohector.vercel.app/` },
+                { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
+                { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
+                { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
+                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.png' },
             ],
             headerTitle: "Blog – Technology",
             description: "Blog about Technology and architecture"

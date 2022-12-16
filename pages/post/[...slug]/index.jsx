@@ -2,7 +2,7 @@
 
 import { Component } from 'react';
 import dynamic from 'next/dynamic';
-import { PageContext,pageHeaderType } from '../../../components/context';
+import { PageContext, pageHeaderType } from '../../../components/context';
 import Database from '../../../components/Firebase';
 import Loading from '../../../components/Loading';
 
@@ -20,7 +20,7 @@ const SeoHeader = dynamic(() => import('../../../components/seoHeader'), {
 });
 
 export async function getStaticProps({ params }) {
-    const { slug } = params
+    const { slug } = params;
     return {
         revalidate: 1,
         props: { slug },
@@ -55,7 +55,7 @@ class Post extends Component {
             },
         }
         this.getTask = this.getTask.bind(this);
-        context.setPageSettings({headerType: pageHeaderType.Post, });
+        context.setPageSettings({ headerType: pageHeaderType.Post, });
     }
 
     async getTask() {
@@ -77,7 +77,7 @@ class Post extends Component {
                 });
                 return post;
             }).catch(err => console.log(err));
-                       
+
             this.setState({
                 postInfo: { ...result },
                 headers: [
@@ -89,6 +89,10 @@ class Post extends Component {
                     { property: 'og:image', content: `https://romanohector.vercel.app/assets/posts/${this.idPost}/${result.cover}` },
                     { property: "og:site_name", content: result.Author },
                     { property: "canonical", content: `https://romanohector.vercel.app/post/${this.postName}/${this.idPost}` },
+                    { property: "itemProp", value: 'creator', content: result.Author },
+                    { property: "itemProp", value: 'name', content: result.Author },
+                    { property: "itemProp", value: 'description', content: result.Description },
+                    { property: "itemProp", value: 'image', content: `https://romanohector.vercel.app/assets/posts/${this.idPost}/${result.cover}` },
                 ],
                 headerTitle: result.Title,
                 description: result.Description + result.DatePublish
@@ -103,16 +107,26 @@ class Post extends Component {
         try {
             const result = await this.getTask();
             let pageConfig = this.context.pageSettings;
+            const language = window.navigator.userLanguage || window.navigator.language;
+            const dateParser = /(\d{2})\/(\d{2})\/(\d{4})/;
+            const matchDate = result.DatePublish.match(dateParser);
+            const date = new Date(
+                matchDate[3],  // year
+                matchDate[2]-1,  // monthIndex
+                matchDate[1]// day
+            );
+            const dateParse = date.toLocaleDateString(language, { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ;
             const settings = {
                 ...pageConfig,
                 backgroundImage: `url('../../../assets/posts/${this.idPost}/${result.cover}')`,
                 pageTitle: result.Title,
-                pageSubTitle: result.Description + result.DatePublis,
+                pageSubTitle: result.Description,
                 headerType: pageHeaderType.Post,
                 pageAuthor: result.Author,
-                pageDatePublish: result.DatePublish,
+                pageDatePublish: dateParse,
             }
-            this.context.setPageSettings(settings); 
+
+            this.context.setPageSettings(settings);
         } catch (error) {
             console.log(error);
         }
@@ -124,10 +138,16 @@ class Post extends Component {
                 <>
                     <PageHeader />
                     <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
-                    <article className="mb-4">
+                    <article className="mb-4" itemScope itemType='https://schema.org/Article'>
+                        <div style={{display: 'none'}}>
+                            <span itemProp="name">{this.context.pageSettings.pageTitle}</span>
+                            <span itemProp="description">{this.context.pageSettings.pageSubTitle}</span>
+                            <span itemProp="datePublished">{this.context.pageSettings.pageDatePublish}</span>
+                        </div>
+
                         <div className="container px-4 px-lg-5">
                             <div className="row gx-4 gx-lg-5 justify-content-center">
-                                <div className="col-md-10 col-lg-8 col-xl-7">
+                                <div className="col-md-10 col-lg-8 col-xl-7" itemProp="articleBody">
                                     <Markdown
                                         options={{
                                             overrides: {

@@ -2,7 +2,7 @@
 
 import { Component } from "react";
 import dynamic from 'next/dynamic';
-import { PageContext,pageHeaderType } from '../../components/context';
+import { PageContext, pageHeaderType } from '../../components/context';
 
 const PageHeader = dynamic(() => import("../../components/PageHeader"), {
     ssr: false,
@@ -28,8 +28,13 @@ class About extends Component {
                 { property: "og:type", content: "website" },
                 { property: "og:title", content: "Blog – Technology" },
                 { property: "og:description", content: "Looking for " },
-                { property: "og:url", content: "https://romanohector.vercel.app/" },
+                { property: "og:url", content: "https://romanohector.vercel.app/about" },
                 { property: "og:site_name", content: "Hector Romano Blog" },
+                { property: "canonical", content: 'https://romanohector.vercel.app/about' },
+                { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
+                { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
+                { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
+                { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.png' },
             ],
             headerTitle: "Blog – Technology / About me",
             description: "Blog about Technology and architecture-> About me"
@@ -42,7 +47,7 @@ class About extends Component {
                 <PageHeader />
                 <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
                 <main className="mb-4" itemScope itemType="https://schema.org/Person">
-                <div className="text-center"><h3 itemProp="name" style={{display: 'none'}}>Hector Abraham Romano</h3></div>
+                    <div className="text-center"><h3 itemProp="name" style={{ display: 'none' }}>Hector Abraham Romano</h3></div>
                     <div className="container px-4 px-lg-5">
                         <div className="row gx-4 gx-lg-5 justify-content-center">
                             <div className="col-md-10 col-lg-8 col-xl-7">
