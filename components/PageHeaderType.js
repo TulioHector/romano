@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import { Component } from "react";
 
 class HeaderTypeToRender extends Component {
@@ -9,13 +8,20 @@ class HeaderTypeToRender extends Component {
         super(props);
         const {pageSettings} = props;
         this.typeHeader = pageSettings.headerType;
+        this.state = {
+            hasMounted: false,
+        };
+    }
+
+    async componentDidMount() {
+        this.setState({ hasMounted: true, });
     }
 
     render() {
         const {pageSettings} = this.props;
         switch (this.typeHeader) {
             case 'post':
-                return (
+                return this.state.hasMounted && (
                     <>
                     <div className="post-heading">
                         <h1>{pageSettings.pageTitle}</h1>
@@ -30,7 +36,7 @@ class HeaderTypeToRender extends Component {
                 );
             case 'contact':
             case 'about':
-                return (
+                return this.state.hasMounted && (
                     <>
                     <div className="page-heading">
                         <h1>{pageSettings.pageTitle}</h1>
@@ -39,7 +45,7 @@ class HeaderTypeToRender extends Component {
                     </>
                 );
             default:
-                return (
+                return this.state.hasMounted && (
                     <>
                     <div className="site-heading">
                         <h1>{pageSettings.pageTitle}</h1>

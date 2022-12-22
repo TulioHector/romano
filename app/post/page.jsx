@@ -1,19 +1,11 @@
-'use client';
-
-import { Component, Suspense } from 'react';
+"use client"
+import { Component } from 'react';
 import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
-import Loading from '../../components/Loading';
 
-const List = dynamic(() => import('./list'), {
-    ssr: false,
-});
-const PageHeader = dynamic(() => import('../../components/PageHeader'), {
-    ssr: false,
-});
-const SeoHeader = dynamic(() => import('../../components/seoHeader'), {
-    ssr: false,
-});
+const List = dynamic(() => import('./list'));
+const PageHeader = dynamic(() => import('../../components/PageHeader'));
+const SeoHeader = dynamic(() => import('../../components/seoHeader'));
 
 class Home extends Component {
     static contextType = PageContext;
@@ -22,6 +14,7 @@ class Home extends Component {
         super(props);
 
         this.state = {
+            hasMounted: false,
             headers: [
                 { property: "og:locale", content: "es_AR" },
                 { property: "og:type", content: "website" },
@@ -40,23 +33,25 @@ class Home extends Component {
         };
     }
 
+    async componentDidMount() {
+        this.setState({ hasMounted: true, });
+    }
+
     render() {
-        return (
+        return this.state.hasMounted && (
             <>
                 <PageHeader />
                 <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
-                <Suspense fallback={<Loading />}>
-                    <div className="container px-4 px-lg-5">
-                        <div className="row gx-4 gx-lg-5 justify-content-center">
-                            <div className="col-md-10 col-lg-8 col-xl-7" id='poastList'>
-                                <List />
-                            </div>
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-md-10 col-lg-8 col-xl-7" id='poastList'>
+                            <List />
                         </div>
                     </div>
-                </Suspense>
+                </div>
             </>
         )
     }
-};
+}
 
 export default Home;

@@ -1,14 +1,10 @@
-'use client';
+"use client"
 import { Component } from "react";
 import dynamic from 'next/dynamic';
 import { PageContext } from '../components/context';
 
-const PageHeader = dynamic(() => import("../components/PageHeader"), {
-    ssr: false,
-  });
-const SeoHeader = dynamic(() => import("../components/seoHeader"), {
-    ssr: false,
-  });
+const PageHeader = dynamic(() => import("../components/PageHeader"));
+const SeoHeader = dynamic(() => import("../components/seoHeader"));
 
 //https://codepen.io/WithAnEs/pen/abNGxX
 class NoPage extends Component {
@@ -22,6 +18,7 @@ class NoPage extends Component {
         pageConfig.pageSubTitle = "Page Not Found";
         context.setPageSettings(pageConfig);
         this.state = {
+            hasMounted: false,
             headers: [
                 { property: "og:locale", content: "es_AR" },
                 { property: "og:type", content: "website" },
@@ -34,8 +31,13 @@ class NoPage extends Component {
             description: "Blog about Technology and architecture-> Page Not Found 404"
         };
     }
+
+    async componentDidMount() {
+        this.setState({ hasMounted: true, });
+    }
+
     render() {
-        return (
+        return this.state.hasMounted && (
             <>
                 <PageHeader />
                 <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />

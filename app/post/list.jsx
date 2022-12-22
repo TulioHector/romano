@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import { Component, Fragment, createRef } from "react";
 import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
@@ -17,6 +16,7 @@ class List extends Component {
         super(props);
         this.state = {
             posts: [],
+            hasMounted: false,
         }
         this.page.current = 1;
         this.loadPosts.bind(this);
@@ -37,6 +37,7 @@ class List extends Component {
 
     async componentDidMount() {
         try {
+            this.setState({ hasMounted: true, });
             const Fetchdata = async () => {
                 const info = await this.loadPosts(this.page);
                 const listPost = this.state.posts.concat(info)
@@ -47,7 +48,7 @@ class List extends Component {
     }
 
     render() {
-        return (
+        return this.state.hasMounted && (
             <>
                 <InfiniteScroll
                     dataLength={3}

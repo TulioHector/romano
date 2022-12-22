@@ -1,23 +1,15 @@
-'use client';
-
+"use client"
 import { Component } from 'react';
+import { withRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../../components/context';
 import Database from '../../../components/Firebase';
 import Loading from '../../../components/Loading';
 
-const Markdown = dynamic(() => import("markdown-to-jsx"), {
-    ssr: false,
-});
-const Code = dynamic(() => import("../../../components/Code"), {
-    ssr: false,
-});
-const PageHeader = dynamic(() => import('../../../components/PageHeader'), {
-    ssr: false,
-});
-const SeoHeader = dynamic(() => import('../../../components/seoHeader'), {
-    ssr: false,
-});
+const Markdown = dynamic(() => import("markdown-to-jsx"));
+const Code = dynamic(() => import("../../../components/Code"));
+const PageHeader = dynamic(() => import('../../../components/PageHeader'));
+const SeoHeader = dynamic(() => import('../../../components/seoHeader'));
 
 export async function getStaticProps({ params }) {
     const { slug } = params;
@@ -44,10 +36,11 @@ class Post extends Component {
 
     constructor(props, context) {
         super(props);
-        const slug = props.slug;
+        const slug = props.params.slug;
         this.idPost = slug[1];
         this.postName = slug[0];
         this.state = {
+            hasMounted: false,
             postContent: '',
             isDark: true,
             setIsDark: (toogle) => {
@@ -57,6 +50,10 @@ class Post extends Component {
         this.getTask = this.getTask.bind(this);
         context.setPageSettings({ headerType: pageHeaderType.Post, });
     }
+
+    // static getInitialProps = async ({ query }) => {
+    //     return { query };
+    // }
 
     async getTask() {
         try {
@@ -105,6 +102,7 @@ class Post extends Component {
 
     async componentDidMount() {
         try {
+            this.setState({ hasMounted: true, });
             const result = await this.getTask();
             let pageConfig = this.context.pageSettings;
             const language = window.navigator.userLanguage || window.navigator.language;
@@ -112,10 +110,10 @@ class Post extends Component {
             const matchDate = result.DatePublish.match(dateParser);
             const date = new Date(
                 matchDate[3],  // year
-                matchDate[2]-1,  // monthIndex
+                matchDate[2] - 1,  // monthIndex
                 matchDate[1]// day
             );
-            const dateParse = date.toLocaleDateString(language, { weekday:"long", year:"numeric", month:"short", day:"numeric"}) ;
+            const dateParse = date.toLocaleDateString(language, { weekday: "long", year: "numeric", month: "short", day: "numeric" });
             const settings = {
                 ...pageConfig,
                 backgroundImage: `url('../../../assets/posts/${this.idPost}/${result.cover}')`,
@@ -134,12 +132,12 @@ class Post extends Component {
 
     render() {
         if (this.state.postInfo !== undefined) {
-            return (
+            return this.state.hasMounted && (
                 <>
                     <PageHeader />
                     <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
                     <article className="mb-4" itemScope itemType='https://schema.org/Article'>
-                        <div style={{display: 'none'}}>
+                        <div style={{ display: 'none' }}>
                             <span itemProp="name">{this.context.pageSettings.pageTitle}</span>
                             <span itemProp="description">{this.context.pageSettings.pageSubTitle}</span>
                             <span itemProp="datePublished">{this.context.pageSettings.pageDatePublish}</span>
@@ -170,7 +168,7 @@ class Post extends Component {
                 </>
             );
         } else {
-            return (
+            return this.state.hasMounted && (
                 <>
                     <PageHeader />
                     <article className="mb-4">

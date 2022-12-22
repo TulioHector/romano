@@ -1,4 +1,4 @@
-'use client';
+
 import { Component } from "react";
 
 class Loading extends Component {

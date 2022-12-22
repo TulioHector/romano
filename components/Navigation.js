@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import { Component } from "react";
 import Link from 'next/link';
 import { PageContext } from '../components/context';
@@ -7,12 +6,23 @@ import { PageContext } from '../components/context';
 class Navigation extends Component {
     static contextType = PageContext;
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasMounted: false,
+        };
+    }
+
+    async componentDidMount() {
+        this.setState({ hasMounted: true, });
+    }
+
     render() {
-        return (
+        return this.state.hasMounted && (
             <>
                 <nav className="navbar navbar-expand-lg navbar-light" id="mainNav">
                     <div className="container px-4 px-lg-5">
-                        <Link className="navbar-brand" href="/">Hector Abraham Romano</Link>
+                        <a className="navbar-brand" href="/">Hector Abraham Romano</a>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             Menu
                             <i className="fas fa-bars"></i>

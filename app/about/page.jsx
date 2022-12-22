@@ -1,5 +1,4 @@
-'use client';
-
+"use client"
 import { Component } from "react";
 import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../components/context';

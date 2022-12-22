@@ -1,17 +1,25 @@
-'use client';
-
+"use client"
 import { Component } from 'react';
 import dynamic from 'next/dynamic';
 import { PageContext } from '../components/context';
 
-const HeaderTypeToRender = dynamic(() => import('../components/PageHeaderType'), {
-    ssr: false,
-});
+const HeaderTypeToRender = dynamic(() => import('../components/PageHeaderType'));
 class PageHeader extends Component {
     static contextType = PageContext;
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            hasMounted: false,
+        };
+    }
+
+    async componentDidMount() {
+        this.setState({ hasMounted: true, });
+    }
+
     render() {
-        return (
+        return this.state.hasMounted &&(
             <>
                 <PageContext.Consumer>
                     {

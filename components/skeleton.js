@@ -1,7 +1,5 @@
-'use client';
-
-import React, { Component } from 'react';
-
+"use client"
+import { Component } from 'react';
 
 class Skeleton extends Component {
 
@@ -14,7 +12,7 @@ class Skeleton extends Component {
                         <div className="post-preview">
                             <a href="#!">
                                 <h2 className="skeleton-title">.</h2>
-                                <h3 className="skeleton-description">.</h3>
+                                <h3 className="skeleton-description"></h3>
                             </a>
                             <p className="skeleton-powerby">
                                 
