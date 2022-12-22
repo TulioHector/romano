@@ -1,7 +1,7 @@
 "use client"
 import { Component } from "react";
 import dynamic from 'next/dynamic';
-import { PageContext } from '../components/context';
+import { PageContext, pageHeaderType } from '../components/context';
 
 const PageHeader = dynamic(() => import("../components/PageHeader"));
 const SeoHeader = dynamic(() => import("../components/seoHeader"));
@@ -13,9 +13,10 @@ class NoPage extends Component {
     constructor(props, context) {
         super(props);
         let pageConfig = context.pageSettings;
-        pageConfig.backgroundImage = "url('assets/img/404-rebound.webp')";
+        pageConfig.backgroundImage = "url('/assets/img/404-rebound.webp')";
         pageConfig.pageTitle = "404";
         pageConfig.pageSubTitle = "Page Not Found";
+        pageConfig.headerType = pageHeaderType.PageNotFound;
         context.setPageSettings(pageConfig);
         this.state = {
             hasMounted: false,

@@ -3,7 +3,7 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   experimental: {
-    appDir: true,
+    appDir: false,
   },
 }
 

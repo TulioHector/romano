@@ -3,7 +3,8 @@ export const pageHeaderType = {
     About: 'about',
     Contact: 'contact',
     Index: 'index',
-    Post: 'post'
+    Post: 'post',
+    PageNotFound: '404',
 }
 export const pageConfig = {
     "backgroundImage": "url('assets/img/home-bg.webp')",

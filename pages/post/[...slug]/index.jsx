@@ -1,6 +1,5 @@
 "use client"
 import { Component } from 'react';
-import { withRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../../components/context';
 import Database from '../../../components/Firebase';
@@ -36,7 +35,7 @@ class Post extends Component {
 
     constructor(props, context) {
         super(props);
-        const slug = props.params.slug;
+        const slug = props.slug;
         this.idPost = slug[1];
         this.postName = slug[0];
         this.state = {

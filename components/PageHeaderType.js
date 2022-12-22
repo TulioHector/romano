@@ -8,6 +8,7 @@ class HeaderTypeToRender extends Component {
         super(props);
         const {pageSettings} = props;
         this.typeHeader = pageSettings.headerType;
+        console.log(this.typeHeader);
         this.state = {
             hasMounted: false,
         };
@@ -19,6 +20,7 @@ class HeaderTypeToRender extends Component {
 
     render() {
         const {pageSettings} = this.props;
+        
         switch (this.typeHeader) {
             case 'post':
                 return this.state.hasMounted && (
