@@ -8,7 +8,6 @@ class HeaderTypeToRender extends Component {
         super(props);
         const {pageSettings} = props;
         this.typeHeader = pageSettings.headerType;
-        console.log(this.typeHeader);
         this.state = {
             hasMounted: false,
         };

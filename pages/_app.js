@@ -1,6 +1,7 @@
 'use client';
 import Head from 'next/head';
 import Script from 'next/script';
+import { Analytics } from '@vercel/analytics/react';
 import Layout from "./layout";
 import '../styles/index.css';
 import '../styles/Post.css';
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps, appProps }) {
                     <title>Blog Hector Abraham Romano</title>
                 </Head>
                 <Component {...pageProps} {...appProps} />
+                <Analytics mode={'production'}/>
             </Layout>
             <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-J121YJLNSF"/>            
             <Script src='/scripts/analytics.js'/>
