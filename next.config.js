@@ -2,12 +2,13 @@ const { imageConfigDefault } = require('next/dist/shared/lib/image-config');
 
 /** @type {import('next').NextConfig} */
 const ContentSecurityPolicy = `
-  default-src 'self' https://firestore.googleapis.com/;
+  default-src 'self' ;
   script-src  'self' 'unsafe-inline' https://www.googletagmanager.com vitals.vercel-insights.com;
   child-src romanohector.vercel.app;
   style-src 'unsafe-inline' romanohector.vercel.app fonts.googleapis.com;
   font-src 'self' fonts.gstatic.com identitytoolkit.googleapis.com;
-  img-src www.googletagmanager.com www.google.com/;
+  img-src 'self' www.googletagmanager.com www.google.com/;
+  connect-src https://firestore.googleapis.com https://vitals.vercel-insights.com;
 `;
 let securityHeaders = [
   {
