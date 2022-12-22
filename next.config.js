@@ -20,25 +20,21 @@ let securityHeaders = [
     value: '1; mode=block'
   },
   {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
-  {
     key: 'X-Frame-Options',
     value: 'DENY',
   },
-  {
-    key: 'X-Content-Type-Options',
-    value: 'nosniff',
-  },
+  // {
+  //   key: 'X-Content-Type-Options',
+  //   value: 'nosniff',
+  // },
   {
     key: 'Strict-Transport-Security',
     value: 'max-age=31536000',
   },
-  {
-    key: 'Referrer-Policy',
-    value: 'origin-when-cross-origin',
-  },
+  // {
+  //   key: 'Referrer-Policy',
+  //   value: 'origin-when-cross-origin',
+  // },
   {
     key: 'Content-Security-Policy',
     value: ContentSecurityPolicy.replace(/\s{2,}/g, ' ').trim()

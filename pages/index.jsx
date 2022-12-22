@@ -37,8 +37,8 @@ class HomePage extends Component {
         { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
         { property: "itemProp", value: 'image', content: '/assets/img/tito-avatar.webp' },
       ],
-      headerTitle: "Blog – Technology / 404",
-      description: "Blog about Technology and architecture-> 404",
+      headerTitle: "Blog – Technology / Home",
+      description: "Blog about Technology and architecture-> Home",
     };
   }
 
