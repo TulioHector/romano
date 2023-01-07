@@ -1,13 +1,16 @@
 "use client"
 import { Component } from 'react';
 import dynamic from 'next/dynamic';
-import PageContextProvider from '../components/context';
+import {PageContextProvider,PageContext} from '../components/context';
+import LocaleContextProvider from '../components/i18n';
 
 const Navigation = dynamic(() => import('../components/Navigation'));
 const Footer = dynamic(() => import('../components/Footer'));
 
 class RootLayout extends Component {
-  constructor(props) {
+  static contextType = PageContext;
+
+  constructor(props, context) {
     super(props);
     this.state = {
       hasMounted: false,
@@ -21,11 +24,13 @@ class RootLayout extends Component {
   render() {
     return (
       <>
-        <Navigation />
-        <PageContextProvider>
-          {this.props.children}
-        </PageContextProvider>
-        <Footer />
+        <LocaleContextProvider>
+          <Navigation />
+          <PageContextProvider>
+            {this.props.children}
+          </PageContextProvider>
+          <Footer />
+        </LocaleContextProvider>
       </>
     )
   }

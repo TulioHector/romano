@@ -17,7 +17,7 @@ class ContactMe extends Component {
     constructor(props, context) {
         super(props);
         let pageConfig = context.pageSettings;
-        pageConfig.backgroundImage = "url('../assets/img/contact-bg.webp')";
+        pageConfig.backgroundImage = "url('/assets/img/contact-bg.webp')";
         pageConfig.pageTitle = "Contact Me";
         pageConfig.pageSubTitle = "Contact with me";
         pageConfig.headerType = pageHeaderType.Contact;

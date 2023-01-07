@@ -1,5 +1,6 @@
 "use client"
 import { Component } from "react";
+import { withRouter } from 'next/router'
 import Link from 'next/link';
 import { PageContext } from '../components/context';
 
@@ -8,11 +9,17 @@ class Navigation extends Component {
 
     constructor(props) {
         super(props);
+        console.log("navigation props->",props);
         this.state = {
             hasMounted: false,
         };
     }
 
+    handleClick(e,locale) {
+        e.preventDefault();
+        console.log("locale selected->", locale);
+        this.props.router.push(this.props.router.asPath, undefined, { locale: locale });
+    }
     async componentDidMount() {
         this.setState({ hasMounted: true, });
     }
@@ -32,7 +39,14 @@ class Navigation extends Component {
                                 <li className="nav-item"><Link href="/" className="nav-link px-lg-3 py-3 py-lg-4">Home</Link></li>
                                 <li className="nav-item"><Link href="/about" className="nav-link px-lg-3 py-3 py-lg-4">About me</Link></li>
                                 <li className="nav-item"><Link href="/contact" className="nav-link px-lg-3 py-3 py-lg-4">Contact</Link></li>
-                                <li className="nav-item"><Link href="/contact" className="nav-link px-lg-3 py-3 py-lg-4">Lenguaje</Link></li>
+                                <li className="nav-item dropdown">
+                                    <a href="#" className="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Language <span className="caret"></span></a>
+                                    <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">
+                                        <li><a className="dropdown-item" href="#" onClick={(e) => this.handleClick(e, "es-AR")}><span className="fi fi-ar fis"></span>Argentina</a></li>
+                                        <li><a className="dropdown-item" href="#" onClick={(e) => this.handleClick(e, "es-ES")}><span className="fi fi-es fis"></span>España</a></li>
+                                        <li><a className="dropdown-item" href="#" onClick={(e) => this.handleClick(e, "en-US")}><span className="fi fi-us fis"></span>EEUU</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -42,4 +56,4 @@ class Navigation extends Component {
     }
 }
 
-export default Navigation;
+export default withRouter(Navigation);

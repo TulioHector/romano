@@ -16,7 +16,7 @@ class About extends Component {
     constructor(props, context) {
         super(props);
         let pageConfig = context.pageSettings;
-        pageConfig.backgroundImage = "url('../assets/img/about-bg.webp')";
+        pageConfig.backgroundImage = "url('/assets/img/about-bg.webp')";
         pageConfig.pageTitle = "About Me";
         pageConfig.pageSubTitle = "";
         pageConfig.headerType = pageHeaderType.About;

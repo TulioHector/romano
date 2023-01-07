@@ -1,4 +1,5 @@
 import {createContext, useState} from 'react';
+
 export const pageHeaderType = {
     About: 'about',
     Contact: 'contact',
@@ -6,6 +7,7 @@ export const pageHeaderType = {
     Post: 'post',
     PageNotFound: '404',
 }
+
 export const pageConfig = {
     "backgroundImage": "url('assets/img/home-bg.webp')",
     "pageTitle": "Architecture Blog",
@@ -21,10 +23,10 @@ export const pageConfig = {
         storageBucket: "blog-hector.appspot.com",
         messagingSenderId: "782647056381",
         appId: "1:782647056381:web:c4b836092a06d03fc0ab94",
-        measurementId: "G-5LDTLQ3CPB"
-        //databaseURL: "https://blog-hector-default-rtdb.firebaseio.com/"
+        measurementId: "G-5LDTLQ3CPB",
     },
-    "pagingSize": 10
+    "pagingSize": 10,
+    i18n: {},
 };
 
 export const PageContext = createContext();

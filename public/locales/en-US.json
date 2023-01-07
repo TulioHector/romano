@@ -1,0 +1,24 @@
+{
+    "home": {
+        "title": "Blog about architecture",
+        "description": "A Blog for software architecture references and solutions",
+        "headers": {
+            "title": "Blog – Technology",
+            "description": "Looking for ",
+            "siteName": "Hector Romano Blog"
+        },
+        "microdata": {
+            "creator": "Hector Abraham Romano",
+            "name": "Hector Abraham Romano",
+            "description": "Blog for references on software architectures and solutions"
+        }
+    },
+    "menu": {
+        "nav": {
+            "home": "home",
+            "contact": "contact",
+            "about": "about",
+            "language": "Language"
+        }
+    }
+}

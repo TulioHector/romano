@@ -1,4 +1,5 @@
 'use client';
+import { useEffect } from 'react'; 
 import Head from 'next/head';
 import Script from 'next/script';
 import Layout from "./layout";
@@ -8,14 +9,19 @@ import '../styles/Code.css';
 import '../styles/notfound.css';
 import '../styles/loading.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import 'flag-icons';
 
 function MyApp({ Component, pageProps, appProps }) {
+    useEffect(() => {
+        import('bootstrap/dist/js/bootstrap.bundle.js');
+    }, [])
+
     return (
         <>
             <Layout>
                 <Head>
                     <meta charSet="utf-8" />
-                    <link rel="icon" href="/favicon.ico" />
+                    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
                     <meta name="google-site-verification" content="_CEGB1blc7j4nO9Axyzlkf-DPCWnRHCJOJXZN2FaKec" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="theme-color" content="#000000" />
@@ -29,8 +35,8 @@ function MyApp({ Component, pageProps, appProps }) {
                 </Head>
                 <Component {...pageProps} {...appProps} />
             </Layout>
-            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-J121YJLNSF"/>            
-            <Script src='/scripts/analytics.js'/>
+            <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-J121YJLNSF" />
+            <Script src='/scripts/analytics.js' />
             <Script src="/template.js" />
         </>
     )

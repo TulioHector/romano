@@ -18,13 +18,23 @@ export async function getStaticProps({ params }) {
     };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ locales }) {
+    const listPost = [
+        { slug: ['2022-12-01-ADR-architecture-decision-records', '3'] },
+        { slug: ['tutorial1', '1'] },
+        { slug: ['2022-10-20-arquitectura-evolutiva', '2'] },
+    ];
+    const paths = listPost.flatMap(post => {
+        return locales.map(locale => {
+            console.log("a post->", post);
+          return {
+           params: post,
+           locale: locale,
+          };
+        });
+    });
     return {
-        paths: [
-            { params: { slug: ['2022-12-01-ADR-architecture-decision-records', '3'] } },
-            { params: { slug: ['tutorial1', '1'] } },
-            { params: { slug: ['2022-10-20-arquitectura-evolutiva', '2'] } },
-        ], fallback: false
+        paths: paths, fallback: false
     }
 }
 
@@ -49,10 +59,6 @@ class Post extends Component {
         this.getTask = this.getTask.bind(this);
         context.setPageSettings({ headerType: pageHeaderType.Post, });
     }
-
-    // static getInitialProps = async ({ query }) => {
-    //     return { query };
-    // }
 
     async getTask() {
         try {
@@ -115,7 +121,7 @@ class Post extends Component {
             const dateParse = date.toLocaleDateString(language, { weekday: "long", year: "numeric", month: "short", day: "numeric" });
             const settings = {
                 ...pageConfig,
-                backgroundImage: `url('../../../assets/posts/${this.idPost}/${result.cover}')`,
+                backgroundImage: `url('/assets/posts/${this.idPost}/${result.cover}')`,
                 pageTitle: result.Title,
                 pageSubTitle: result.Description,
                 headerType: pageHeaderType.Post,

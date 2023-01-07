@@ -11,12 +11,13 @@ const InfiniteScroll = dynamic(() => import('react-infinite-scroll-component'), 
 class List extends Component {
     static contextType = PageContext;
     page = createRef(1);
-
+    
     constructor(props) {
         super(props);
         this.state = {
             posts: [],
             hasMounted: false,
+            currentLocale: ''
         }
         this.page.current = 1;
         this.loadPosts.bind(this);
@@ -37,7 +38,8 @@ class List extends Component {
 
     async componentDidMount() {
         try {
-            this.setState({ hasMounted: true, });
+            const language = this.state.currentLocale && window.navigator.userLanguage || window.navigator.language || navigator.language;
+            this.setState({ hasMounted: true, currentLocale: language});
             const Fetchdata = async () => {
                 const info = await this.loadPosts(this.page);
                 const listPost = this.state.posts.concat(info)
@@ -64,7 +66,7 @@ class List extends Component {
                     {this.state.posts.map(item => (
                         <Fragment key={item.id}>
                             <div className="post-preview" id={item.id}>
-                                <a href={`${item.url}/${item.id}`}>
+                                <a href={`${this.state.currentLocale}/${item.url}/${item.id}`}>
                                     <h2 className="post-title">{item.Title}</h2>
                                     <h3 className="post-subtitle">{item.Description}</h3>
                                 </a>

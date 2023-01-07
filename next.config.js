@@ -68,6 +68,11 @@ const nextConfig = {
       },
     ]
   },
+  i18n: {
+    locales: ['en-US', 'es-AR', 'es-ES'],
+    defaultLocale: 'es-AR',
+    localeDetection: true,
+  },
 }
 
 module.exports = nextConfig

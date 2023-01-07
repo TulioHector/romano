@@ -3,7 +3,9 @@ import dynamic from 'next/dynamic';
 import { Component } from 'react';
 import { PageContext, pageHeaderType } from '../components/context';
 
-const Home = dynamic(() => import('./post/index'));
+const Home = dynamic(() => import('./post/index'), {
+  ssr: false,
+});
 const PageHeader = dynamic(() => import("../components/PageHeader"), {
   ssr: false,
 });
@@ -29,9 +31,9 @@ class HomePage extends Component {
         { property: "og:type", content: "website" },
         { property: "og:title", content: "Blog – Technology" },
         { property: "og:description", content: "Looking for " },
-        { property: "og:url", content: "https://romanohector.vercel.app/about" },
+        { property: "og:url", content: "https://romanohector.vercel.app/" },
         { property: "og:site_name", content: "Hector Romano Blog" },
-        { property: "canonical", content: 'https://romanohector.vercel.app/about' },
+        { property: "canonical", content: 'https://romanohector.vercel.app/' },
         { property: "itemProp", value: 'creator', content: 'Hector Abraham Romano' },
         { property: "itemProp", value: 'name', content: 'Hector Abraham Romano' },
         { property: "itemProp", value: 'description', content: 'Blog for solutions and software architecture' },
