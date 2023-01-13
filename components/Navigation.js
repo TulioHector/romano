@@ -19,7 +19,6 @@ class Navigation extends PureComponent {
         const localeSelected = this.context.locale.setLocaleSettings;
         this.props.router.push(this.props.router.asPath, undefined, { locale: locale });
         const jsonLocale = LoadLocaleAsync(locale).then((response) => {
-            console.log("response reloaded->", response);
             localeSelected(response)
         });
     }

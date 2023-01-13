@@ -21,39 +21,6 @@ export const LoadLocaleAsync = async (locale) => {
     return jsonFile;
 }
 
-export const LoadLocaleSync = (locale) => {
-    let jsonFile = loadJSON(`/locales/${locale}.json`);
-    console.log("i18n sync json->", jsonFile);
-    return jsonFile;
-}
-
-// Load JSON text from server hosted file and return JSON parsed object
-const loadJSON = (filePath) => {
-    // Load json file;
-    var json = loadTextFileAjaxSync(filePath, "application/json");
-    // Parse json
-    return JSON.parse(json);
-}
-
-// Load text with Ajax synchronously: takes path to file and optional MIME type
-const loadTextFileAjaxSync = (filePath, mimeType) => {
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("GET", filePath, false);
-    if (mimeType != null) {
-        if (xmlhttp.overrideMimeType) {
-            xmlhttp.overrideMimeType(mimeType);
-        }
-    }
-    xmlhttp.send();
-    if (xmlhttp.status == 200 && xmlhttp.readyState == 4) {
-        return xmlhttp.responseText;
-    }
-    else {
-        // TODO Throw exception
-        return null;
-    }
-}
-
 class LocaleContextProvider extends PureComponent {
     constructor(props) {
         super(props);
