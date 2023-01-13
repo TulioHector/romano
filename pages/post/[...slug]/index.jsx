@@ -23,6 +23,8 @@ export async function getStaticPaths({ locales }) {
         { slug: ['2022-12-01-ADR-architecture-decision-records', '3'] },
         { slug: ['tutorial1', '1'] },
         { slug: ['2022-10-20-arquitectura-evolutiva', '2'] },
+        { slug: ['2023-01-05-diagrams-arquitectura', '4'] },
+        { slug: ['2023-01-06-pensar-como-arquitecto', '5'] },
     ];
     const paths = listPost.flatMap(post => {
         return locales.map(locale => {
@@ -101,7 +103,7 @@ class Post extends PureComponent {
             });
             return result;
         } catch (error) {
-            console.log(error);
+            console.log("Error to load md file:",error);
         }
     }
 
