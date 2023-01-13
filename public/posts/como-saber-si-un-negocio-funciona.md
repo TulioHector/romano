@@ -1,0 +1,1 @@
+https://medium.com/swlh/how-to-know-if-a-business-is-a-bad-idea-before-even-starting-it-da7e3ff656ba
