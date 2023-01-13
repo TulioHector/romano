@@ -1,5 +1,5 @@
 "use client"
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../../components/context';
 import Database from '../../../components/Firebase';
@@ -38,7 +38,7 @@ export async function getStaticPaths({ locales }) {
     }
 }
 
-class Post extends Component {
+class Post extends PureComponent {
     static contextType = PageContext;
     static idPost = 0;
     static postName = {};

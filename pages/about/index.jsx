@@ -1,5 +1,5 @@
 "use client"
-import { Component } from "react";
+import { PureComponent } from "react";
 import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../components/context';
 
@@ -10,15 +10,15 @@ const SeoHeader = dynamic(() => import("../../components/seoHeader"), {
     ssr: false,
 });
 
-class About extends Component {
+class About extends PureComponent {
     static contextType = PageContext;
 
     constructor(props, context) {
         super(props);
         let pageConfig = context.pageSettings;
         pageConfig.backgroundImage = "url('/assets/img/about-bg.webp')";
-        pageConfig.pageTitle = "About Me";
-        pageConfig.pageSubTitle = "";
+        // pageConfig.pageTitle = "About Me";
+        // pageConfig.pageSubTitle = "";
         pageConfig.headerType = pageHeaderType.About;
         context.setPageSettings(pageConfig);
         this.state = {

@@ -1,7 +1,7 @@
 
-import { Component } from "react";
+import { PureComponent } from "react";
 
-class Loading extends Component {
+class Loading extends PureComponent {
     render() {
         return (
             <>

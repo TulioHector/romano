@@ -1,10 +1,10 @@
 "use client"
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { PageContext } from '../components/context';
 
 const HeaderTypeToRender = dynamic(() => import('../components/PageHeaderType'));
-class PageHeader extends Component {
+class PageHeader extends PureComponent {
     static contextType = PageContext;
 
     constructor(props) {
@@ -19,7 +19,7 @@ class PageHeader extends Component {
     }
 
     render() {
-        return this.state.hasMounted &&(
+        return this.state.hasMounted && (
             <>
                 <PageContext.Consumer>
                     {
@@ -29,7 +29,7 @@ class PageHeader extends Component {
                                     <div className="container position-relative px-4 px-lg-5">
                                         <div className="row gx-4 gx-lg-5 justify-content-center">
                                             <div className="col-md-10 col-lg-8 col-xl-7">
-                                                <HeaderTypeToRender pageSettings={value.pageSettings}/>
+                                                <HeaderTypeToRender pageSettings={value.pageSettings} />
                                             </div>
                                         </div>
                                     </div>

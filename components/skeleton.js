@@ -1,7 +1,7 @@
 "use client"
-import { Component } from 'react';
+import { PureComponent } from 'react';
 
-class Skeleton extends Component {
+class Skeleton extends PureComponent {
 
     render() {
         return (

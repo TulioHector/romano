@@ -1,11 +1,11 @@
 "use client"
-import { Component } from 'react';
+import { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
 
 const List = dynamic(() => import('./list'));
 
-class Home extends Component {
+class Home extends PureComponent {
     static contextType = PageContext;
 
     constructor(props) {

@@ -1,6 +1,7 @@
 "use client"
 import dynamic from 'next/dynamic';
-import { Component } from 'react';
+import { PureComponent } from 'react';
+import { withRouter } from 'next/router';
 import { PageContext, pageHeaderType } from '../components/context';
 
 const Home = dynamic(() => import('./post/index'), {
@@ -13,16 +14,15 @@ const SeoHeader = dynamic(() => import("../components/seoHeader"), {
   ssr: false,
 });
 
-class HomePage extends Component {
+
+class HomePage extends PureComponent {
   static contextType = PageContext;
 
   constructor(props, context) {
     super(props);
     let pageConfig = context.pageSettings;
     pageConfig.backgroundImage = "url('../assets/img/home-bg.webp')";
-    pageConfig.pageTitle = "Architecture Blo";
-    pageConfig.pageSubTitle = "A Blog for architecture";
-    pageConfig.headerType = pageHeaderType.About;
+    pageConfig.headerType = pageHeaderType.Index;
     context.setPageSettings(pageConfig);
     this.state = {
       hasMounted: false,
@@ -59,4 +59,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default withRouter(HomePage);

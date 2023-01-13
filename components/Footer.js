@@ -1,8 +1,8 @@
 "use client"
 
-import { Component } from "react";
+import { PureComponent } from "react";
 
-class Footer extends Component {
+class Footer extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

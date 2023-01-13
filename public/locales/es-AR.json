@@ -2,6 +2,7 @@
     "home": {
         "title": "Blog sobre arquitectura",
         "description": "Un Blog para referencias de arquitectura de software y soluciones",
+        "subTitle": "Un blog para arquitectos",
         "headers": {
             "title": "Blog – Technology",
             "description": "Looking for ",
@@ -20,5 +21,10 @@
             "about": "Sobre mi",
             "language": "Idioma"
         }
+    },
+    "pages": {
+        "home": {"title": "Blog de Arqutiectura", "subTitle": "Un blog para arquitectos"},
+        "contact": {"title": "Contactame", "subTitle": "Contatame por cualquier consulta"},
+        "about": {"title": "Sobre mi", "subTitle": ""}
     }
 }

@@ -33,6 +33,7 @@ export const PageContext = createContext();
 
 export const PageContextProvider = (props) => {
     const [pageSettings, setPageSettings] = useState(pageConfig);
+//    const value = useMemo(() => [pageSettings, setPageSettings], [pageSettings]);
 
     return (
         <PageContext.Provider value={{pageSettings, setPageSettings}}>
