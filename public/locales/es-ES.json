@@ -1,0 +1,30 @@
+{
+    "home": {
+        "title": "Blog sobre arquitectura",
+        "description": "Un Blog para referencias de arquitectura de software y soluciones",
+        "subTitle": "Un blog para arquitectos",
+        "headers": {
+            "title": "Blog – Technology",
+            "description": "Looking for ",
+            "siteName": "Hector Romano Blog"
+        },
+        "microdata": {
+            "creator": "Hector Abraham Romano",
+            "name": "Hector Abraham Romano",
+            "description": "Blog para referencias sobre arquitecturas de softeware y soluciones"
+        }
+    },
+    "menu": {
+        "nav": {
+            "home": "Inicio",
+            "contact": "Contacto",
+            "about": "Sobre mi",
+            "language": "Idioma"
+        }
+    },
+    "pages": {
+        "home": {"title": "Blog de Arqutiectura", "subTitle": "Un blog para arquitectos"},
+        "contact": {"title": "Contactame", "subTitle": "Contatame por cualquier consulta"},
+        "about": {"title": "Sobre mi", "subTitle": ""}
+    }
+}
