@@ -2,6 +2,7 @@
 import { PureComponent } from "react";
 import { withRouter } from 'next/router';
 import { LocaleContext } from '../components/i18n';
+import Typed from "react-typed"
 
 class HeaderTypeToRender extends PureComponent {
     typeHeader = '';
@@ -18,11 +19,15 @@ class HeaderTypeToRender extends PureComponent {
     }
 
     async componentDidMount() {
+        if(this.typeHeader === 'about'){            
+            const phrass = this.context.locale.localeSettings.pages.about.subTitle.split('|');
+            this.setState({aboutSubTitleArray: phrass});
+        }
         this.setState({ hasMounted: true, locale: this.context.locale.localeSettings });
     }
 
     async componentDidUpdate() {
-        this.setState({locale: this.context.locale.localeSettings});
+        this.setState({ locale: this.context.locale.localeSettings });
     }
 
     render() {
@@ -61,7 +66,13 @@ class HeaderTypeToRender extends PureComponent {
                     <>
                         <div className="page-heading">
                             <h1>{locale.pages.about.title}</h1>
-                            <span className="subheading">{locale.pages.about.subTitle}</span>
+                            <Typed className="subheading"
+                                strings={this.state.aboutSubTitleArray}
+                                typeSpeed={50}
+                                backSpeed={10}
+                                loop
+                            />
+                            
                         </div>
                     </>
                 );

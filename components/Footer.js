@@ -37,6 +37,14 @@ class Footer extends PureComponent {
                                             </span>
                                         </a>
                                     </li>
+                                    <li className="list-inline-item">
+                                        <a href="https://www.linkedin.com/in/romanohector/" aria-label="Follow me in Linkedin">
+                                            <span className="fa-stack fa-lg">
+                                                <i className="fas fa-circle fa-stack-2x"></i>
+                                                <i className="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </a>
+                                    </li>
                                 </ul>
                                 <div className="small text-center text-muted fst-italic">Copyright &copy; Hector Abraham Romano {new Date().getFullYear()}</div>
                             </div>

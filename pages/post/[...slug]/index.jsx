@@ -25,6 +25,7 @@ export async function getStaticPaths({ locales }) {
         { slug: ['2022-10-20-arquitectura-evolutiva', '2'] },
         { slug: ['2023-01-05-diagrams-arquitectura', '4'] },
         { slug: ['2023-01-06-pensar-como-arquitecto', '5'] },
+        { slug: ['2023-03-14-API-Gateway', '7'] },
     ];
     const paths = listPost.flatMap(post => {
         return locales.map(locale => {
@@ -161,6 +162,11 @@ class Post extends PureComponent {
                                                     props: {
                                                         isDark: this.state.isDark,
                                                         setIsDark: this.state.setIsDark
+                                                    }
+                                                },
+                                                table: {
+                                                    props: {
+                                                        className: 'table table-sm table-responsive',
                                                     }
                                                 }
                                             }

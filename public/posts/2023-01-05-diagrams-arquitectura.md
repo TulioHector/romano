@@ -75,6 +75,8 @@ En ciertos momentos, una versión del diagrama no es suficiente. Por lo tanto, a
 Cuando tenemos la aprobación del lado comercial/negocio, entonteces podemos comenzar con los diagramas de servicio y de desarrollador. El diagrama de servicios se los entregamos a las áreas de telecomunicaciones y/o ingenieros IT para asegurarnos que comprendan a alto nivel lo que se está desarrollando. Mientras que el diagrama de desarrollador se los entregamos al equipo de desarrollo que va a implementar la solución.
 Una vez que finalizamos con los diagramas, podemos encarar el diagrama de infraestructura.
 
+
+Si deseas leer más artículos interesantes sobre tecnología, asegúrate de visitar su sitio web en [mi blog](https://romanohector.vercel.app/).
 Si sientes que has extraído algún valor del contenido de este articulo, considera colaborar con la compra de café. ¡Gracias!
 
 [ko-fi](https://ko-fi.com/hectorromano)

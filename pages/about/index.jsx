@@ -17,8 +17,6 @@ class About extends PureComponent {
         super(props);
         let pageConfig = context.pageSettings;
         pageConfig.backgroundImage = "url('/assets/img/about-bg.webp')";
-        // pageConfig.pageTitle = "About Me";
-        // pageConfig.pageSubTitle = "";
         pageConfig.headerType = pageHeaderType.About;
         context.setPageSettings(pageConfig);
         this.state = {

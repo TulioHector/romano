@@ -49,6 +49,8 @@ Hay varias herramientas que nos pueden ayudar a administrar las ADR´s. A contin
 
 [https://www.npmjs.com/package/adr-cli](https://www.npmjs.com/package/adr-cli)
 
+
+Si deseas leer más artículos interesantes sobre tecnología, asegúrate de visitar su sitio web en [mi blog](https://romanohector.vercel.app/).
 Si sientes que has extraído algún valor del contenido de este articulo, considera colaborar con la compra de café. ¡Gracias!
 
 [ko-fi](https://ko-fi.com/hectorromano)

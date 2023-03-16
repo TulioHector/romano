@@ -25,6 +25,6 @@
     "pages": {
         "home": {"title": "Architecture Blog", "subTitle": "A Blog for architecture"},
         "contact": {"title": "Contact Me", "subTitle": "Contact with me"},
-        "about": {"title": "About Me", "subTitle": ""}
+        "about": {"title": "About me", "subTitle": "Full Stack Developer | Software Architect | Solution Architect"}
     }
 }

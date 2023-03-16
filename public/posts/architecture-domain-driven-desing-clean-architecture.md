@@ -5,3 +5,13 @@ https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/comm
 https://awesome-architecture.com/clean-architecture/
 https://blog.fals.io/2018-09-19-cqrs-clean-architecture/
 https://www.dandoescode.com/blog/clean-architecture-an-introduction
+
+
+
+
+
+
+Si deseas leer más artículos interesantes sobre tecnología, asegúrate de visitar su sitio web en [mi blog](https://romanohector.vercel.app/).
+Si sientes que has extraído algún valor del contenido de este articulo, considera colaborar con la compra de café. ¡Gracias!
+
+[ko-fi](https://ko-fi.com/hectorromano)

@@ -109,6 +109,8 @@ Detrás del concepto de arquitectura evolutiva, se desarrollan mecanismos que si
 
 En el siguiente enlace podemos ingresar a un sitio con distintos katas para practicar las arquitecturas por medio de las funciones de aptitud. En el sitio se encuentras las reglas para practicar estos katas: [Building Evolutionary Architecture Katas](http://evolutionaryarchitecture.com/ffkatas/index.html).
 
+
+Si deseas leer más artículos interesantes sobre tecnología, asegúrate de visitar su sitio web en [mi blog](https://romanohector.vercel.app/).
 Si sientes que has extraído algún valor del contenido de este articulo, considera colaborar con la compra de café. ¡Gracias!
 
 [ko-fi](https://ko-fi.com/hectorromano)

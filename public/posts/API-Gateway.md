@@ -1,1 +1,0 @@
-https://medium.com/buildpiper/how-do-api-gateways-work-3b989fdcd751
