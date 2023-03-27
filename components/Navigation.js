@@ -52,6 +52,7 @@ class Navigation extends PureComponent {
                                 <li className="nav-item"><Link href="/" className="nav-link px-lg-3 py-3 py-lg-4">{`${menu.nav.home}`}</Link></li>
                                 <li className="nav-item"><Link href="/about" className="nav-link px-lg-3 py-3 py-lg-4">{`${menu.nav.about}`}</Link></li>
                                 <li className="nav-item"><Link href="/contact" className="nav-link px-lg-3 py-3 py-lg-4">{`${menu.nav.contact}`}</Link></li>
+                                <li className="nav-item"><Link href="/bio" className="nav-link px-lg-3 py-3 py-lg-4">{`${menu.nav.bio}`}</Link></li>
                                 <li className="nav-item dropdown">
                                     <a href="#" className="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">{`${menu.nav.language}`} <span className="caret"></span></a>
                                     <ul className="dropdown-menu" role="menu" aria-labelledby="dropdownMenuLink">

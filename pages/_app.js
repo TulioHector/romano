@@ -8,6 +8,7 @@ import '../styles/Post.css';
 import '../styles/Code.css';
 import '../styles/notfound.css';
 import '../styles/loading.css';
+import '../styles/bio.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'flag-icons';
 
@@ -38,6 +39,8 @@ function MyApp({ Component, pageProps, appProps }) {
             <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-J121YJLNSF" />
             <Script src='/scripts/analytics.js' />
             <Script src="/template.js" />
+            <Script src='/scripts/masonry.pkgd.min.js'/>
+            <Script src='/scripts/runMasonry.js'/>
         </>
     )
 }

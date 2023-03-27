@@ -6,6 +6,7 @@ export const pageHeaderType = {
     Index: 'index',
     Post: 'post',
     PageNotFound: '404',
+    Bio: 'bio',
 }
 
 export const pageConfig = {

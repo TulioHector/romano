@@ -4,11 +4,14 @@ import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../../components/context';
 import Database from '../../../components/Firebase';
 import Loading from '../../../components/Loading';
+import moment from 'moment';
 
-const Markdown = dynamic(() => import("markdown-to-jsx"));
-const Code = dynamic(() => import("../../../components/Code"));
-const PageHeader = dynamic(() => import('../../../components/PageHeader'));
-const SeoHeader = dynamic(() => import('../../../components/seoHeader'));
+const Markdown = dynamic(() => import("markdown-to-jsx"), {ssr: false});
+const Code = dynamic(() => import("../../../components/Code"), {ssr: false});
+const PageHeader = dynamic(() => import('../../../components/PageHeader'), {ssr: false});
+const SeoHeader = dynamic(() => import('../../../components/seoHeader'), {ssr: false});
+const LastPosts = dynamic(() => import('../recentList'), {ssr: false});
+const SideBar = dynamic(() => import('../sidebar'), {ssr: false});
 
 export async function getStaticProps({ params }) {
     const { slug } = params;
@@ -30,10 +33,10 @@ export async function getStaticPaths({ locales }) {
     const paths = listPost.flatMap(post => {
         return locales.map(locale => {
             console.log("a post->", post);
-          return {
-           params: post,
-           locale: locale,
-          };
+            return {
+                params: post,
+                locale: locale,
+            };
         });
     });
     return {
@@ -104,7 +107,7 @@ class Post extends PureComponent {
             });
             return result;
         } catch (error) {
-            console.log("Error to load md file:",error);
+            console.log("Error to load md file:", error);
         }
     }
 
@@ -114,14 +117,7 @@ class Post extends PureComponent {
             const result = await this.getTask();
             let pageConfig = this.context.pageSettings;
             const language = window.navigator.userLanguage || window.navigator.language;
-            const dateParser = /(\d{2})\/(\d{2})\/(\d{4})/;
-            const matchDate = result.DatePublish.match(dateParser);
-            const date = new Date(
-                matchDate[3],  // year
-                matchDate[2] - 1,  // monthIndex
-                matchDate[1]// day
-            );
-            const dateParse = date.toLocaleDateString(language, { weekday: "long", year: "numeric", month: "short", day: "numeric" });
+            moment.locale(language);
             const settings = {
                 ...pageConfig,
                 backgroundImage: `url('/assets/posts/${this.idPost}/${result.cover}')`,
@@ -129,7 +125,7 @@ class Post extends PureComponent {
                 pageSubTitle: result.Description,
                 headerType: pageHeaderType.Post,
                 pageAuthor: result.Author,
-                pageDatePublish: dateParse,
+                pageDatePublish: moment(result.DatePublish.toDate()).format('LL'),
             }
 
             this.context.setPageSettings(settings);
@@ -151,9 +147,9 @@ class Post extends PureComponent {
                             <span itemProp="datePublished">{this.context.pageSettings.pageDatePublish}</span>
                         </div>
 
-                        <div className="container px-4 px-lg-5">
-                            <div className="row gx-4 gx-lg-5 justify-content-center">
-                                <div className="col-md-10 col-lg-8 col-xl-7" itemProp="articleBody">
+                        <div className="container">
+                            <div className="row justify-content-center">
+                                <div itemProp="articleBody" className='col-lg-9'>
                                     <Markdown
                                         options={{
                                             overrides: {
@@ -175,9 +171,11 @@ class Post extends PureComponent {
                                         {this.state.postContent}
                                     </Markdown>
                                 </div>
+                                <SideBar/>
                             </div>
                         </div>
                     </article>
+                    <LastPosts />
                 </>
             );
         } else {

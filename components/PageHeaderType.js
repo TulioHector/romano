@@ -19,9 +19,9 @@ class HeaderTypeToRender extends PureComponent {
     }
 
     async componentDidMount() {
-        if(this.typeHeader === 'about'){            
+        if (this.typeHeader === 'about' || this.typeHeader === 'bio') {
             const phrass = this.context.locale.localeSettings.pages.about.subTitle.split('|');
-            this.setState({aboutSubTitleArray: phrass});
+            this.setState({ aboutSubTitleArray: phrass });
         }
         this.setState({ hasMounted: true, locale: this.context.locale.localeSettings });
     }
@@ -72,7 +72,21 @@ class HeaderTypeToRender extends PureComponent {
                                 backSpeed={10}
                                 loop
                             />
-                            
+
+                        </div>
+                    </>
+                );
+            case 'bio':
+                return this.state.hasMounted && (
+                    <>
+                        <div className="page-heading">
+                            <h1>{locale.pages.bio.title}</h1>
+                            <Typed className="subheading"
+                                strings={this.state.aboutSubTitleArray}
+                                typeSpeed={50}
+                                backSpeed={10}
+                                loop
+                            />
                         </div>
                     </>
                 );

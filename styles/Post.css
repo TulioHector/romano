@@ -1,8 +1,94 @@
 .article-wrapper {
-    padding: 2rem;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+  padding: 2rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.article__cover img {
+  width: 100%;
+}
+
+
+.btn-tag {
+  /* background-color: #ECEFF1; */
+  text-transform: capitalize !important;
+  margin-bottom: 10px;
+  box-shadow: none;
+}
+
+.btn-tag:hover {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .25), 0 3px 10px 5px rgba(0, 0, 0, 0.05) !important;
+}
+
+/*Profile Card 5*/
+.profile-card-5 {
+  margin: 20px 0px 16px;
+}
+
+.profile-card-5 .btn {
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 7px 20px;
+}
+
+.profile-card-5 .card-img-block {
+  width: 91%;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+
+}
+
+.profile-card-5 .card-img-block img {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+  width: 286px;
+  height: 180px;
+}
+
+.profile-card-5 h5 {
+  color: #4E5E30;
+  font-weight: 600;
+}
+
+.profile-card-5 p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.profile-card-5 .btn-primary {
+  background-color: #0085A1;
+  border-color: #0085A1;
+}
+
+@media (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
   }
-  
-  .article__cover img {
-    width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card-columns {
+    column-count: 3;
   }
+}
+
+@media (min-width: 992px) {
+  .card-columns {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 1200px) {
+  .card-columns {
+    column-count: 5;
+  }
+}
+.card-columns {
+  @include media-breakpoint-only(lg) {
+    column-count: 4;
+  }
+  @include media-breakpoint-only(xl) {
+    column-count: 5;
+  }
+}

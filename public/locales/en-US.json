@@ -19,12 +19,14 @@
             "home": "home",
             "contact": "contact",
             "about": "about",
-            "language": "Language"
+            "language": "Language",
+            "bio": "Bio"
         }
     },
     "pages": {
         "home": {"title": "Architecture Blog", "subTitle": "A Blog for architecture"},
         "contact": {"title": "Contact Me", "subTitle": "Contact with me"},
-        "about": {"title": "About me", "subTitle": "Full Stack Developer | Software Architect | Solution Architect"}
+        "about": {"title": "About me", "subTitle": "Full Stack Developer | Software Architect | Solution Architect"},
+        "bio": {"title": "Biography", "subTitle": "Full Stack Developer | Arquitecto de Software | Arquitecto de Soluciones"}
     }
 }

@@ -48,9 +48,12 @@ class About extends PureComponent {
                     <div className="container px-4 px-lg-5">
                         <div className="row gx-4 gx-lg-5 justify-content-center">
                             <div className="col-md-10 col-lg-8 col-xl-7">
-                                <p>Hace más de 6 años se desempeña como arquitecto de soluciones participando en equipos multidisciplinarios generando desafíos técnicos en diferentes tipos de negocio.</p>
-                                <p>Cuenta con experiencia en el sector financiero. Le interesan las nuevas tecnologías, la innovación, la investigación, la arquitectura de soluciones.</p>
-                                <p>Le gusta capacitarse y transmitir experiencia al equipo de trabajo y aprender de la experiencia de colegas. Actualmente se interesa poder avanzar a arquitectura empresarial.</p>
+                                <p>Como arquitecto de soluciones con ocho años de experiencia, he enfrentado desafíos técnicos únicos en diferentes tipos de negocios y sectores, incluyendo el sector financiero. Mi experiencia me ha permitido desarrollar habilidades en la escalabilidad, seguridad y regulaciones, y trabajar en equipos multidisciplinarios.</p>
+                                <p>Durante mis tres años como arquitecto de software .NET, adquirí habilidades especializadas en tecnologías .NET y en el desarrollo de software en general. También tuve la oportunidad de liderar equipos técnicos como líder técnico .NET durante un año y trabajar en estrecha colaboración con otros líderes empresariales.</p>
+                                <p>Como desarrollador full-stack con siete años de experiencia, he adquirido habilidades en el desarrollo tanto del lado del servidor como del lado del cliente, lo que me permite abordar los desafíos técnicos desde diferentes perspectivas.</p>
+                                <p>Me apasiona la innovación, la investigación y la arquitectura de soluciones. Me gusta aprender de la experiencia de mis colegas y también transmitir mi conocimiento al equipo de trabajo. Además, he adquirido habilidades de liderazgo que me permiten guiar a otros en la dirección correcta.</p>
+                                <p>En mi sitio de Blog, compartiré mi experiencia y conocimiento sobre temas relacionados con la arquitectura de soluciones, la innovación y las nuevas tecnologías. Espero que mis publicaciones sean útiles y relevantes para otros profesionales en el campo.</p>
+                                <p>Agradezco su tiempo en leer mi perfil y visitar mi sitio de Blog. ¡Espero conectar con ustedes en LinkedIn y seguir compartiendo nuestras experiencias y conocimientos!</p>
                             </div>
                         </div>
                     </div>

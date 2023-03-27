@@ -3,6 +3,7 @@ import { PureComponent, Fragment, createRef } from "react";
 import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
 import Database from '../../components/Firebase';
+import moment from 'moment';
 
 const InfiniteScroll = dynamic(() => import('react-infinite-scroll-component'), {
     ssr: false,
@@ -32,7 +33,6 @@ class List extends PureComponent {
                 info.push(data);
             });
         }
-        
         return info;
     }
 
@@ -45,6 +45,7 @@ class List extends PureComponent {
                 const listPost = this.state.posts.concat(info)
                 this.setState({ posts: listPost });
             }
+            moment.locale(language);
             await Fetchdata();
         } catch (error) { console.log(error) }
     }
@@ -74,7 +75,7 @@ class List extends PureComponent {
                                 <p className="post-meta">
                                     Posted by
                                     <a href="#!"> {item.Author} </a>
-                                    {item.DatePublish}
+                                    {moment(item.DatePublish.toDate()).format('LL')}
                                 </p>
                             </div>
                             <hr className="my-4" />
