@@ -65,7 +65,7 @@ class SideBar extends PureComponent {
                             <Image itemProp="image" src="/assets/img/tito-avatar.webp" alt="Hector Abraham Romano" className="rounded-circle" width={150} height={150} />
                             <div className="bio-body">
                                 <h2 itemProp="name">Hector Abraham Romano</h2>
-                                <p className="mb-4" itemprop="disambiguatingDescription">Héctor es un arquitecto de soluciones con amplia experiencia en el campo y habilidades en el desarrollo del lado del servidor y del lado del cliente. Es un líder técnico .NET y ha trabajado en proyectos desafiantes en diferentes sectores, adquiriendo conocimientos especializados en el sector financiero. Además, es un apasionado de la innovación y la investigación, compartiendo su conocimiento a través de su Blog sobre arquitectura de soluciones, innovación y nuevas tecnologías.</p>
+                                <p className="mb-4" itemProp="disambiguatingDescription">Héctor es un arquitecto de soluciones con amplia experiencia en el campo y habilidades en el desarrollo del lado del servidor y del lado del cliente. Es un líder técnico .NET y ha trabajado en proyectos desafiantes en diferentes sectores, adquiriendo conocimientos especializados en el sector financiero. Además, es un apasionado de la innovación y la investigación, compartiendo su conocimiento a través de su Blog sobre arquitectura de soluciones, innovación y nuevas tecnologías.</p>
                                 <p><Link href="/bio" className="btn btn-primary btn-sm rounded px-4 py-2">Read my bio</Link></p>
 
                             </div>
