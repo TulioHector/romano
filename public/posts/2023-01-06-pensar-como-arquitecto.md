@@ -1,10 +1,10 @@
-Desde que comencé mi carrera como desarrollador de software, siempre me ha apasionado la creación de soluciones tecnológicas efectivas y escalables. Con el tiempo, mi experiencia y habilidades como desarrollador me llevaron a un nivel y luego, a convertirme en arquitecto de software.
+Desde que comencé mi carrera como desarrollador de software, siempre me ha apasionado la creación de soluciones tecnológicas efectivas y escalables. Con el tiempo llegue a convertirme en arquitecto de software.
 
 Sin embargo, a medida que mi carrera progresaba, me di cuenta de que había una diferencia fundamental entre ser un arquitecto de software y ser un arquitecto de soluciones. Como arquitecto de software, mi enfoque principal era diseñar la estructura técnica de una solución, pero como arquitecto de soluciones, mi enfoque cambió hacia el diseño holístico de una solución, considerando tanto las necesidades del cliente como las limitaciones técnicas.
 
 En mi experiencia, la transición de desarrollador senior a arquitecto de software fue un paso importante, pero la transición de arquitecto de software a arquitecto de soluciones fue un cambio significativo. Descubrí que pensar como un arquitecto de soluciones implica un enfoque más estratégico y holístico, que va más allá del diseño técnico y se centra en la creación de soluciones efectivas que satisfagan las necesidades del cliente.
 
-En este artículo, compartiré contigo algunos consejos para pensar como un arquitecto, basados en mi propia experiencia en la transición de desarrollador senior a arquitecto de software y luego, a arquitecto de soluciones. Espero que estos consejos te sean útiles y te ayuden a dar el siguiente paso en tu carrera como desarrollador o arquitecto de soluciones.
+En este artículo, compartiré contigo algunos consejos para pensar como un arquitecto, basados en mi propia experiencia en la transición de desarrollador senior a arquitecto de software y luego, a arquitecto de soluciones. Espero que estos consejos te sean útiles y te ayuden a dar el siguiente paso en tu carrera.
 
 Al comenzar la carrear o trayecto como arquitecto puede resultar algo complicado. Te empiezas a preguntar ¿Cómo puedo desarrollar las habilidades necesarias para hacer ese movimiento?
 
@@ -22,14 +22,14 @@ Los arquitectos de soluciones son especialmente útiles en situaciones en las qu
 En este artículo, aprenderás cómo pensar como un arquitecto de soluciones y aplicar su enfoque creativo a la resolución de problemas en tu trabajo o en cualquier otro ámbito de la vida. Siguiendo los consejos y técnicas presentados en este artículo, podrás mejorar tus habilidades de pensamiento crítico y resolución de problemas, lo que te ayudará a enfrentar cualquier desafío con confianza y éxito.
 
 # Cómo pensar como un arquitecto
-La arquitectura de soluciones es un enfoque de diseño sistemático que permite crear de forma efectivas y escalables soluciones. Como arquitecto de soluciones, es necesario pensar de manera holística y estratégica para desarrollar una solución que satisfaga las necesidades del cliente y cumpla con los requisitos técnicos. A continuación te presento algunos consejos para pcomenzar a pensar como un arquitecto exitoso. 
+La arquitectura de soluciones es un enfoque de diseño sistemático que permite crear de forma efectivas y escalables soluciones. Como arquitecto de soluciones, es necesario pensar de manera holística y estratégica para desarrollar una solución que satisfaga las necesidades del cliente y cumpla con los requisitos técnicos. A continuación te presento algunos consejos para pcomenzar a pensar como un arquitecto. 
 
 Supongamos que tenemos que diseñar una solución de comercio electrónico para una tienda en línea que vende productos electrónicos. Como arquitecto de soluciones, nuestro objetivo sería diseñar una solución que satisfaga las necesidades del cliente y ofrezca una experiencia de usuario óptima. Para lograr esto, podríamos seguir este hilo de pensamiento:
 
 - Comprender las necesidades del cliente
 Antes de comenzar a diseñar una solución, es importante comprender las necesidades del cliente. Esto requiere entender sus necesidades y objetivos comerciales, requisitos técnicos y limitaciones presupuestarias. Una vez que se comprenden estas necesidades, se puede comenzar a diseñar una solución que se adapte. Teniendo en cuenta el ejemplo del comercio electronico, podrias realizar las siguientes preguntas:
-    - ¿Qué tipo de productos vende la tienda?
-    - ¿Qué características deben tener los productos en línea?
+    - ¿Qué tipo de productos se venden?
+    - ¿Qué características deben tener los productos?
     - ¿Cuántos productos se ofrecen?
     - ¿Qué métodos de pago se ofrecen?
     - ¿Cómo se gestionan los pedidos y las devoluciones?
