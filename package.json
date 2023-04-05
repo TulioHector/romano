@@ -19,7 +19,6 @@
     "firebase": "^9.15.0",
     "flag-icons": "^6.6.6",
     "markdown-to-jsx": "^7.1.8",
-    "masonry-layout": "^4.2.2",
     "moment": "^2.29.4",
     "next": "^13.0.6",
     "next-sitemap": "^3.1.43",

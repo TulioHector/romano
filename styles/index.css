@@ -11248,3 +11248,66 @@ header.masthead .site-heading .h1 {
     font-size: 2.25rem;
   }
 }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border: none;  
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+}
+.card a {
+  color: initial;
+}
+
+.card a:hover {
+  text-decoration: initial;
+}
+
+.card .text-muted i {
+  margin: 0 10px;
+}
+
+/*Profile Card 5*/
+.card-posts {
+  margin: 20px 0px 16px;
+}
+
+.card-posts .btn {
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 7px 20px;
+}
+
+.card-posts .card-img-block {
+  width: 91%;
+  margin: 0 auto;
+  position: relative;
+  top: -20px;
+
+}
+
+.card-posts .card-img-block img {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+  width: 100%;
+  height: 100%;
+}
+
+.card-posts h5 {
+  color: #4E5E30;
+  font-weight: 600;
+}
+
+.card-posts p {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.card-posts .btn-primary {
+  background-color: #0085A1;
+  border-color: #0085A1;
+}
