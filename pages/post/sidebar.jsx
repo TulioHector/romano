@@ -80,7 +80,7 @@ class SideBar extends PureComponent {
                                     return (
                                         <li key={index} className="list-group-item d-flex justify-content-between align-items-start">
                                             <div className="ms-2 me-auto">
-                                                <div className="fw-bold"><a href="#" >({post.year}) {post.month}</a></div>
+                                                <div className="fw-bold"><Link href={{ pathname: '/', query: { month:  `${post.year}-${post.month}`} }}>({post.year}) {post.month}</Link></div>
                                             </div>
                                             <span className="badge bg-primary rounded-pill">{post.count}</span>
                                         </li>

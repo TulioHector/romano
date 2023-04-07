@@ -22,12 +22,12 @@ class List extends PureComponent {
         this.cargarMasArticulos = this.cargarMasArticulos.bind(this);
     }
 
-    async loadPosts(page, lastItemList, currentTotal) {
+    async loadPosts(page, monthQueryParam, lastItemList, currentTotal) {
         let info = [];
         if (page) {
-            const list = await FirestoreFacade.getInstance().getPostList(page, 5, lastItemList, currentTotal);
+            const list = await FirestoreFacade.getInstance().getPostList(page, 5, lastItemList, currentTotal, monthQueryParam);
             const lastVisible = list?.querySnapshot.docs[list?.querySnapshot.docs.length - 1];
-            this.setState({ lastItemList: lastVisible, currentItemsTotal:  list?.currentTotal});
+            this.setState({ lastItemList: lastVisible, currentItemsTotal: list?.currentTotal });
             list?.querySnapshot.forEach((element) => {
                 const data = element.data();
                 info.push(data);
@@ -40,23 +40,26 @@ class List extends PureComponent {
         e.preventDefault();
         const { page, lastItemList, currentItemsTotal } = this.state;
         const nextPage = page + 1;
-        if(lastItemList && currentItemsTotal) {
-            const info = await this.loadPosts(nextPage, lastItemList, currentItemsTotal);
+        if (lastItemList && currentItemsTotal) {
+            const info = await this.loadPosts(nextPage, null,lastItemList, currentItemsTotal);
             const listPost = this.state.posts.concat(info.map(doc => doc));
             this.setState({ posts: listPost, page: nextPage });
-        }        
+        }
     };
 
     async componentDidMount() {
         try {
             const language = this.state.currentLocale && window.navigator.userLanguage || window.navigator.language || navigator.language;
+            moment.locale(language);
+            const queryParams = new URLSearchParams(window.location.search);
+            let month = queryParams.get("month");            
             this.setState({ hasMounted: true, currentLocale: language });
             const Fetchdata = async () => {
-                const info = await this.loadPosts(this.state.page);
+                const info = await this.loadPosts(this.state.page, month);
                 const listPost = this.state.posts.concat(info)
                 this.setState({ posts: listPost });
             }
-            moment.locale(language);
+            
             await Fetchdata();
         } catch (error) { console.log(error) }
     }

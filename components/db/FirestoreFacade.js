@@ -14,8 +14,8 @@ class FirestoreFacade {
         return FirestoreFacade.instance;
     }
 
-    async getPostList(page, perPage, lastItemList,currentTotal) {
-        return this.postService.getPostList(page, perPage, lastItemList,currentTotal);
+    async getPostList(page, perPage, lastItemList,currentTotal, monthFilter) {
+        return this.postService.getPostList(page, perPage, lastItemList,currentTotal, monthFilter);
     }
 
     async getPostById(id) {

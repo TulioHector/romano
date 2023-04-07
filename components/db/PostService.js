@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, orderBy, limit, where, startAfter } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, orderBy, limit, where, startAfter, Timestamp } from "firebase/firestore";
 import FirebaseSingleton from './FirebaseSingleton';
 
 class PostService {
@@ -6,22 +6,32 @@ class PostService {
         this.db = FirebaseSingleton.getInstance().getDb();
     }
 
-    async getPostList(page, perPage, lastItemList, currentTotal) {
+    async getPostList(page, perPage, lastItemList, currentTotal, monthFilter) {
         const postsRef = collection(this.db, "posts");
         let q;
-        if(lastItemList) {
+
+        if (lastItemList) {
             const startIndex = currentTotal < perPage;
-            if(startIndex) {
+            if (startIndex) {
                 return null;
             }
-            q = query(postsRef, orderBy("DatePublish"),startAfter(lastItemList), limit(perPage));
-        }else {
-            q = query(postsRef, orderBy("DatePublish"),startAfter(page * perPage), limit(perPage));
+            q = query(postsRef, orderBy("DatePublish"), startAfter(lastItemList), limit(perPage));
+        } else {
+            q = query(postsRef, orderBy("DatePublish"), startAfter(page * perPage), limit(perPage));
         }
-        
+
+        if (monthFilter) {
+            const startOfMonth = new Date(monthFilter);
+            startOfMonth.setDate(1);
+            const endOfMonth = new Date(monthFilter);
+            endOfMonth.setMonth(endOfMonth.getMonth() + 1);
+            endOfMonth.setDate(0);
+            q = query(q, where('DatePublish', '>=', startOfMonth), where('DatePublish', '<=', endOfMonth));
+        }
+
         const querySnapshot = await getDocs(q);
         const totalDocs = querySnapshot.size;
-        return {querySnapshot, currentTotal: totalDocs};
+        return { querySnapshot, currentTotal: totalDocs };
     }
 
     async getPostById(id) {
@@ -52,32 +62,60 @@ class PostService {
         const countByMonth = [];
 
         const postsRef = collection(this.db, "posts");
+
         for (let year = startYear; year <= currentYear; year++) {
             const promises = [];
+            const monthsWithPosts = new Set();
 
-            for (let month = 1; month <= 12; month++) {
-                if (year === currentYear && month > currentMonth) {
+            const q = query(postsRef, where("DatePublish", ">=", Timestamp.fromDate(new Date(year, 0, 1))), where("DatePublish", "<=", Timestamp.fromDate(new Date(year, 11, 31))));
+
+            const querySnapshot = await getDocs(q);
+
+            querySnapshot.forEach((doc) => {
+                const post = doc.data();
+                const month = new Date(post.DatePublish.seconds * 1000).getMonth();
+
+                monthsWithPosts.add(month);
+            });
+
+            for (let month = 0; month <= 11; month++) {
+                if (year === currentYear && month >= currentMonth) {
                     break;
                 }
 
-                const startDate = new Date(year, month - 1, 1);
-                const endDate = new Date(year, month, 0);
+                const startDate = Timestamp.fromDate(new Date(year, month, 1));
+                const endDate = Timestamp.fromDate(new Date(year, month + 1, 0));
 
-                const q = query(postsRef, where("DatePublish", ">=", startDate), where("DatePublish", "<=", endDate));
-                const promise = getDocs(q).then((querySnapshot) => {
-                    const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
-                    return {
-                        month: monthName,
-                        year: year,
-                        count: querySnapshot.size,
-                    };
-                });
+                if (monthsWithPosts.has(month)) {
+                    const q = query(postsRef, where("DatePublish", ">=", startDate), where("DatePublish", "<=", endDate));
 
-                promises.push(promise);
+                    const promise = getDocs(q).then((querySnapshot) => {
+                        const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
+                        const info = {
+                            month: monthName,
+                            year: year,
+                            count: querySnapshot.size,
+                        };
+                        return info;
+                    });
+
+                    promises.push(promise);
+                } 
+                // else {
+                //     const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
+                //     const info = {
+                //         month: monthName,
+                //         year: year,
+                //         count: 0,
+                //     };
+                //     promises.push(Promise.resolve(info));
+                // }
             }
+
             const result = await Promise.all(promises);
             countByMonth.push(...result.filter((item) => item.count >= 1));
         }
+
         return countByMonth;
     }
 
