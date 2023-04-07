@@ -97,7 +97,7 @@ class SideBar extends PureComponent {
                             {
                                 this.state.listTags.map((tag, index) => {
                                     return (
-                                        <a key={index} href="#" className="btn btn-tag btn-primary btn-sm rounded px-4 py-2">{capitalizeText(tag.name)}</a>
+                                        <Link href={{ pathname: '/', query: { tags:  `${tag.name}`} }} key={index} className="btn btn-tag btn-primary btn-sm rounded px-4 py-2">{capitalizeText(tag.name)}</Link>
                                     )
                                 })
                             }

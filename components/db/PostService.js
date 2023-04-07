@@ -6,7 +6,7 @@ class PostService {
         this.db = FirebaseSingleton.getInstance().getDb();
     }
 
-    async getPostList(page, perPage, lastItemList, currentTotal, monthFilter) {
+    async getPostList(page, perPage, lastItemList, currentTotal, monthFilter, tagFilters) {
         const postsRef = collection(this.db, "posts");
         let q;
 
@@ -27,6 +27,20 @@ class PostService {
             endOfMonth.setMonth(endOfMonth.getMonth() + 1);
             endOfMonth.setDate(0);
             q = query(q, where('DatePublish', '>=', startOfMonth), where('DatePublish', '<=', endOfMonth));
+        }
+
+        if (tagFilters && tagFilters.length > 0) {
+            const tagsRef = collection(this.db, "tags");
+            const tagIds = [];
+            const tagPromises = tagFilters.map(async (tag) => {
+                const tagSnapshot = await getDocs(query(tagsRef, where("name", "==", tag)));
+                if (tagSnapshot.empty) return;
+                tagSnapshot.forEach((doc) => tagIds.push(doc.id));
+            });
+            await Promise.all(tagPromises);
+            if (tagIds.length > 0) {
+                q = query(q, where("tags", "array-contains-any", tagIds));
+            }
         }
 
         const querySnapshot = await getDocs(q);
@@ -100,7 +114,7 @@ class PostService {
                     });
 
                     promises.push(promise);
-                } 
+                }
                 // else {
                 //     const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
                 //     const info = {
