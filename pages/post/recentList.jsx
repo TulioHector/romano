@@ -1,7 +1,8 @@
 "use client"
 import { PureComponent, Fragment, createRef } from "react";
 import Image from 'next/image';
-import Database from '../../components/Firebase';
+//import Database from '../../components/Firebase';
+import FirestoreFacade from '../../components/db/FirestoreFacade';
 
 class LastPost extends PureComponent {
 
@@ -16,7 +17,7 @@ class LastPost extends PureComponent {
 
     async getTask() {
         try {
-            const postDb = Database.getLastPosts();
+            const postDb = FirestoreFacade.getInstance().getLastPosts();
             const result = await postDb.then((item) => {
                 const latestPosts = [];
                 item.forEach((doc) => {

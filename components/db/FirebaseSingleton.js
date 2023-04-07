@@ -1,7 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { pageConfig } from '../context';
 
 class FirebaseSingleton {
   static instance;
@@ -10,7 +9,8 @@ class FirebaseSingleton {
     if (FirebaseSingleton.instance) {
       return FirebaseSingleton.instance;
     }
-    const app = initializeApp(pageConfig.firebaseConfi);
+    const firebaseConfig = JSON.parse(process.env.NEXT_PUBLIC_FIREBASE_OBJ_KEY);
+    const app = initializeApp(firebaseConfig);
 
     FirebaseSingleton.instance = this;
     this.auth = getAuth(app);

@@ -1,32 +1,34 @@
 "use client"
-import { PureComponent, Fragment, createRef } from "react";
+import { PureComponent, Fragment } from "react";
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import { PageContext } from '../../components/context';
-import Database from '../../components/Firebase';
+import FirestoreFacade from '../../components/db/FirestoreFacade';
 import moment from 'moment';
-//import Masonry from 'react-masonry-css';
 
 class List extends PureComponent {
     static contextType = PageContext;
-    page = createRef(1);
 
     constructor(props) {
         super(props);
         this.state = {
             posts: [],
             hasMounted: false,
-            currentLocale: ''
+            currentLocale: '',
+            page: 1,
+            lastItemList: {},
+            currentItemsTotal: 0,
         }
-        this.page.current = 1;
-        this.loadPosts.bind(this);
+        this.loadPosts = this.loadPosts.bind(this);
+        this.cargarMasArticulos = this.cargarMasArticulos.bind(this);
     }
 
-    async loadPosts(page) {
+    async loadPosts(page, lastItemList, currentTotal) {
         let info = [];
         if (page) {
-            const list = await Database.getPostList();
-            list.forEach((element) => {
+            const list = await FirestoreFacade.getInstance().getPostList(page, 5, lastItemList, currentTotal);
+            const lastVisible = list?.querySnapshot.docs[list?.querySnapshot.docs.length - 1];
+            this.setState({ lastItemList: lastVisible, currentItemsTotal:  list?.currentTotal});
+            list?.querySnapshot.forEach((element) => {
                 const data = element.data();
                 info.push(data);
             });
@@ -34,9 +36,15 @@ class List extends PureComponent {
         return info;
     }
 
-    cargarMasArticulos = () => {
-        //setNumArticulos(numArticulos + 10);
-        console.log("voy a buscar mas posts");
+    async cargarMasArticulos(e) {
+        e.preventDefault();
+        const { page, lastItemList, currentItemsTotal } = this.state;
+        const nextPage = page + 1;
+        if(lastItemList && currentItemsTotal) {
+            const info = await this.loadPosts(nextPage, lastItemList, currentItemsTotal);
+            const listPost = this.state.posts.concat(info.map(doc => doc));
+            this.setState({ posts: listPost, page: nextPage });
+        }        
     };
 
     async componentDidMount() {
@@ -44,7 +52,7 @@ class List extends PureComponent {
             const language = this.state.currentLocale && window.navigator.userLanguage || window.navigator.language || navigator.language;
             this.setState({ hasMounted: true, currentLocale: language });
             const Fetchdata = async () => {
-                const info = await this.loadPosts(this.page);
+                const info = await this.loadPosts(this.state.page);
                 const listPost = this.state.posts.concat(info)
                 this.setState({ posts: listPost });
             }
@@ -57,28 +65,10 @@ class List extends PureComponent {
         return this.state.hasMounted && (
             <>
                 {this.state.posts.map(item => (
-                    // <Fragment key={item.id}>
-                    //     <div className="post-preview" id={item.id}>
-                    //         <a href={`${this.state.currentLocale}/${item.url}/${item.id}`}>
-                    //             <h2 className="post-title">{item.Title}</h2>
-                    //             <h3 className="post-subtitle">{item.Description}</h3>
-                    //         </a>
-
-                    //         <p className="post-meta">
-                    //             Posted by
-                    //             <a href="#!"> {item.Author} </a>
-                    //             {moment(item.DatePublish.toDate()).format('LL')}
-                    //         </p>
-                    //     </div>
-                    //     <hr className="my-4" />
-                    // </Fragment>
-
                     <Fragment key={item.id}>
                         <div className="col-sm-6 col-lg-4 mb-4">
-                            <div className="card grid-item border-light mb-3 card-posts text-right" key={item.id} style={{ "width": "511", "height": "260" }}>
-                                <div className="card-img-block">
-                                    <Image src={`/assets/posts/${item.id}/${item.cover}`} alt={item.Title} className="card-img-top" width={511} height={260} />
-                                </div>
+                            <div className="card mb-3 card-list-post" key={item.id} style={{ "width": "511", "height": "260" }}>
+                                <Image src={`/assets/posts/${item.id}/${item.cover}`} alt={item.Title} className="card-img-top" width={511} height={260} />
                                 <div className="card-body">
                                     <a href={`${this.state.currentLocale}/${item.url}/${item.id}`}>
                                         <h5 className="card-title">{item.Title}</h5>
@@ -89,12 +79,11 @@ class List extends PureComponent {
                                 </div>
                             </div>
                         </div>
-
                     </Fragment>
                 ))}
 
                 {(
-                    <button onClick={this.cargarMasArticulos}>Cargar más artículos</button>
+                    <button onClick={this.cargarMasArticulos} className="btn btn-primary btn-lg btn-bloc">Cargar más artículos</button>
                 )}
             </>
         );

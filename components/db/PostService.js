@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, orderBy, limit, where } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, orderBy, limit, where, startAfter } from "firebase/firestore";
 import FirebaseSingleton from './FirebaseSingleton';
 
 class PostService {
@@ -6,11 +6,22 @@ class PostService {
         this.db = FirebaseSingleton.getInstance().getDb();
     }
 
-    async getPostList() {
+    async getPostList(page, perPage, lastItemList, currentTotal) {
         const postsRef = collection(this.db, "posts");
-        const q = query(postsRef, orderBy("DatePublish"), limit(10));
+        let q;
+        if(lastItemList) {
+            const startIndex = currentTotal < perPage;
+            if(startIndex) {
+                return null;
+            }
+            q = query(postsRef, orderBy("DatePublish"),startAfter(lastItemList), limit(perPage));
+        }else {
+            q = query(postsRef, orderBy("DatePublish"),startAfter(page * perPage), limit(perPage));
+        }
+        
         const querySnapshot = await getDocs(q);
-        return querySnapshot;
+        const totalDocs = querySnapshot.size;
+        return {querySnapshot, currentTotal: totalDocs};
     }
 
     async getPostById(id) {

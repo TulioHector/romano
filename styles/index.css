@@ -11270,44 +11270,45 @@ header.masthead .site-heading .h1 {
   margin: 0 10px;
 }
 
-/*Profile Card 5*/
-.card-posts {
-  margin: 20px 0px 16px;
-}
 
-.card-posts .btn {
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-size: 12px;
-  padding: 7px 20px;
-}
-
-.card-posts .card-img-block {
-  width: 91%;
-  margin: 0 auto;
+.card-list-post a {
+  background-image: linear-gradient(
+    to right,
+    #0085A1,
+    #0085A1 50%,
+    #000 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  padding: 5px 0;
   position: relative;
-  top: -20px;
-
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
 }
 
-.card-posts .card-img-block img {
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.63);
+.card-list-post a:before{
+  content: '';
+  background: #0085A1;
+  display: block;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-list-post a:hover {
+ background-position: 0;
+}
+
+.card-list-post a:hover::before{
   width: 100%;
-  height: 100%;
 }
 
-.card-posts h5 {
-  color: #4E5E30;
-  font-weight: 600;
-}
-
-.card-posts p {
-  font-size: 14px;
-  font-weight: 300;
-}
-
-.card-posts .btn-primary {
-  background-color: #0085A1;
-  border-color: #0085A1;
+.card-list-post img {
+  max-width: 511px !important;
+  height: auto;
 }

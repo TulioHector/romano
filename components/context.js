@@ -17,15 +17,6 @@ export const pageConfig = {
     headerType: pageHeaderType.Index,
     pageAuthor: "",
     pageDatePublish: "",
-    "firebaseConfi": {
-        apiKey: "AIzaSyBczw0vICVnVZcfrdYXW1DJTaAvbdhGR0M",
-        authDomain: "blog-hector.firebaseapp.com",
-        projectId: "blog-hector",
-        storageBucket: "blog-hector.appspot.com",
-        messagingSenderId: "782647056381",
-        appId: "1:782647056381:web:c4b836092a06d03fc0ab94",
-        measurementId: "G-5LDTLQ3CPB",
-    },
     "pagingSize": 10,
     i18n: {},
 };

@@ -2,7 +2,7 @@
 import { PureComponent } from 'react';
 import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../../components/context';
-import Database from '../../../components/Firebase';
+import FirestoreFacade from '../../../components/db/FirestoreFacade';
 import Loading from '../../../components/Loading';
 import moment from 'moment';
 
@@ -71,7 +71,7 @@ class Post extends PureComponent {
         try {
             const idPost = Number(this.idPost);
             const postUrl = `/posts/${this.postName}`;
-            const postDb = Database.getPOstById(idPost);
+            const postDb = FirestoreFacade.getInstance().getPostById(idPost);
             const response = await fetch(postUrl + '.md');
             const mdFile = await response.text();
 
@@ -80,8 +80,6 @@ class Post extends PureComponent {
             const result = await postDb.then((item) => {
                 let post;
                 item.forEach((doc) => {
-                    // doc.data() is never undefined for query doc snapshots
-                    //console.log(doc.id, " => ", doc.data());
                     post = doc.data();
                 });
                 return post;
