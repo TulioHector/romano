@@ -1,12 +1,10 @@
 # Introducción
 
-En el mundo del desarrollo de productos, Agile Discovery se ha convertido en una metodología popular para llevar a cabo el proceso de análisis de un producto. En lugar de seguir un enfoque tradicional de análisis, Agile Discovery se basa en una serie de principios y prácticas que involucran a un equipo interdisciplinario para trabajar juntos en la creación de un producto.
+Durante mi participación en el curso dictado por Kleer llamado ["Agile Architecture Workshop"](https://www.kleer.la/es/cursos/46-agile-architecture-workshop), descubrí un método diferente para abordar la arquitectura de software utilizando las cartas de tarot. Al principio, no estaba seguro de cómo las cartas de tarot podían ayudar en la toma de decisiones técnicas, pero pronto me di cuenta de su valor.
 
-En este blog post, nuestro objetivo es proporcionar una guía detallada sobre cómo implementar una metodología de Agile Discovery con tarjetas. Esta metodología permite a los equipos trabajar de manera más eficiente y efectiva, a través de la selección de atributos de calidad esenciales para el producto, que se representan en cartas. La selección de estas cartas permite al equipo identificar las necesidades y prioridades del cliente, y garantizar que el producto resultante sea una solución efectiva y valiosa para ellos.
+Con el tiempo, comencé a experimentar y aplicar esta metodología de las cartas de tarot en mi trabajo diario de arquitectura de software. Descubrí que era una herramienta útil para ayudar a desbloquear mi creatividad y aportar nuevas ideas a los proyectos en los que estaba trabajando. También ayudó a generar discusiones más profundas y significativas con mi equipo sobre las decisiones técnicas que estábamos tomando.
 
-En este sentido, la metodología de Agile Discovery con tarjetas se ha convertido en una herramienta popular para ayudar a los equipos de desarrollo a crear productos que cumplan con las expectativas del cliente. A continuación, presentaremos los pasos clave para implementar esta metodología y cómo puede ayudar a los equipos a mejorar su proceso de análisis de productos.
-
-Es relevante mencionar que para la creación de esta metodología de Agile Discovery con tarjetas, se utilizó como referencia el Tarot de Arquitectura, el cual fue desarrollado por el sitio web Code and Beyond en su sección de Productos y Servicios. Este recurso fue de gran utilidad en la definición de los atributos de calidad y la creación de un marco de trabajo efectivo para la toma de decisiones en el proceso de descubrimiento de productos.
+Mi metodología actual para usar las cartas de tarot es una interpretación y adaptación de lo que aprendí en el taller de Kleer y de cómo he visto que funciona en mi propia experiencia. Esta metodología me ha ayudado a ser más ágil en mi trabajo, lo que me permite responder mejor a los cambios y a las necesidades de los proyectos en los que trabajo. Estoy emocionado de compartir mi enfoque con otros y ver cómo puede ayudarles a ser más eficientes y efectivos en su trabajo de arquitectura de software.
 
 # ¿Qué es Agile Discovery y por qué es importante?
 
