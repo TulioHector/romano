@@ -1,9 +1,17 @@
-import { collection, addDoc, getDocs, query, orderBy, limit, where, startAfter, Timestamp } from "firebase/firestore";
+import { collection, addDoc, getDocs, query, orderBy, limit, where, startAfter, Timestamp, getDoc, doc } from "firebase/firestore";
 import FirebaseSingleton from './FirebaseSingleton';
 
 class PostService {
     constructor() {
         this.db = FirebaseSingleton.getInstance().getDb();
+    }
+
+    async getDocument(coll, id) {
+        const snap = await getDoc(doc(this.db, coll, id))
+        if (snap.exists())
+            return snap.data()
+        else
+            return Promise.reject(Error(`No such document: ${coll}.${id}`))
     }
 
     async getPostList(page, perPage, lastItemList, currentTotal, monthFilter, tagFilters) {
@@ -44,8 +52,29 @@ class PostService {
         }
 
         const querySnapshot = await getDocs(q);
+        lastItemList = querySnapshot.docs[querySnapshot.docs.length - 1];
         const totalDocs = querySnapshot.size;
-        return { querySnapshot, currentTotal: totalDocs };
+        // Obtener los nombres de las etiquetas asociadas a cada publicación
+        const tagMap = new Map();
+        const postsWithTags = querySnapshot.docs.map(async (item) => {
+            const post = item.data();
+            const tagIds = post.tags || [];
+            const tagNames = [];
+            for (const tagId of tagIds) {
+                if (!tagMap.has(tagId)) {
+                    const tagDoc = await this.getDocument('tags', tagId);
+                    const tagName = tagDoc.name;
+                    tagMap.set(tagId, tagName);
+                }
+                tagNames.push(tagMap.get(tagId));
+            }
+            return { ...post, tags: tagNames };
+        });
+
+        const posts = await Promise.all(postsWithTags);
+        
+
+        return { posts, currentTotal: totalDocs, lastItemList };
     }
 
     async getPostById(id) {

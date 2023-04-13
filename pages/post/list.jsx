@@ -1,6 +1,5 @@
 "use client"
-import { PureComponent, Fragment } from "react";
-import Image from 'next/image';
+import { PureComponent, Fragment, createRef } from "react";
 import { PageContext } from '../../components/context';
 import FirestoreFacade from '../../components/db/FirestoreFacade';
 import moment from 'moment';
@@ -20,16 +19,17 @@ class List extends PureComponent {
         }
         this.loadPosts = this.loadPosts.bind(this);
         this.cargarMasArticulos = this.cargarMasArticulos.bind(this);
+        this.postImages = createRef([]);
     }
 
     async loadPosts(page, monthQueryParam, tagsQueryParam, lastItemList, currentTotal) {
         let info = [];
         if (page) {
             const list = await FirestoreFacade.getInstance().getPostList(page, 5, lastItemList, currentTotal, monthQueryParam, tagsQueryParam);
-            const lastVisible = list?.querySnapshot.docs[list?.querySnapshot.docs.length - 1];
+            const lastVisible = list?.lastItemList;
             this.setState({ lastItemList: lastVisible, currentItemsTotal: list?.currentTotal });
-            list?.querySnapshot.forEach((element) => {
-                const data = element.data();
+            list?.posts.forEach((element) => {
+                const data = element;
                 info.push(data);
             });
         }
@@ -41,10 +41,12 @@ class List extends PureComponent {
         const { page, lastItemList, currentItemsTotal } = this.state;
         const nextPage = page + 1;
         if (lastItemList && currentItemsTotal) {
-            const info = await this.loadPosts(nextPage, null, null,lastItemList, currentItemsTotal);
+            const info = await this.loadPosts(nextPage, null, null, lastItemList, currentItemsTotal);
             const listPost = this.state.posts.concat(info.map(doc => doc));
+            this.postImages = listPost.map((element, i) => createRef(i));
             this.setState({ posts: listPost, page: nextPage });
         }
+        this.fitBackground();
     };
 
     async componentDidMount() {
@@ -59,27 +61,54 @@ class List extends PureComponent {
                 const info = await this.loadPosts(this.state.page, month, tagsSelected?.split(';'));
                 const listPost = this.state.posts.concat(info)
                 this.setState({ posts: listPost });
+                this.postImages = listPost.map((element, i) => createRef(i));
             }
-            
+
             await Fetchdata();
         } catch (error) { console.log(error) }
+    }
+
+    fitBackground = () => {
+        const postImagesArray = Object.values(this.postImages);
+        postImagesArray.forEach((ref, i) => {
+            if (ref && ref.current) {
+                const current = ref.current;
+                const backgroundSrc = current.getAttribute('data-src');
+                const newCss = {
+                    backgroundImage: `url('${backgroundSrc}')`,
+                    backgroundPosition: 'center center',
+                    backgroundSize: 'cover',
+                };
+                Object.assign(current.style, newCss);
+            }
+        });
+    };
+
+    async componentDidUpdate() {
+        this.fitBackground();
     }
 
     render() {
         return this.state.hasMounted && (
             <>
-                {this.state.posts.map(item => (
+                {this.state.posts.map((item, index) => (
                     <Fragment key={item.id}>
-                        <div className="col-sm-6 col-lg-4 mb-4">
-                            <div className="card mb-3 card-list-post" key={item.id} style={{ "width": "511", "height": "260" }}>
-                                <Image src={`/assets/posts/${item.id}/${item.cover}`} alt={item.Title} className="card-img-top" width={511} height={260} />
-                                <div className="card-body">
-                                    <a href={`${this.state.currentLocale}/${item.url}/${item.id}`}>
-                                        <h5 className="card-title">{item.Title}</h5>
-                                    </a>
-
-                                    <p className="card-text">{item.Description}</p>
-                                    <p className="card-text"><small className="text-muted">{moment(item.DatePublish.toDate()).format('LL')}</small></p>
+                        <div className="card-box col-sm-6 col-lg-4 mb-4">
+                            <div className="card card-list-post" key={item.id} data-background="image" data-src={`/assets/posts/${item.id}/${item.cover}`} ref={this.postImages[index]}>
+                                <div className="header">
+                                    <div className="category">
+                                        {item.tags.map((tag, tagIndex) => (
+                                            <h6 key={`tag_${tagIndex}`} className="label label-danger">{tag}</h6>
+                                        ))}
+                                        <p className="description">{item.Description}</p>
+                                    </div>
+                                </div>
+                                <div className="content">
+                                    <h4 className="title title-uppercase">
+                                        <a href={`${this.state.currentLocale}/${item.url}/${item.id}`}>{item.Title}</a>
+                                    </h4>
+                                </div>
+                                <div className="filter">
                                 </div>
                             </div>
                         </div>

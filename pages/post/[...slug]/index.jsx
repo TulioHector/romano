@@ -30,6 +30,7 @@ export async function getStaticPaths({ locales }) {
         { slug: ['2023-01-06-pensar-como-arquitecto', '5'] },
         { slug: ['2023-03-14-API-Gateway', '7'] },
         { slug: ['2023-03-28-deuda-tecnica', '8'] },
+        { slug: ['2023-04-13-Agile-discovery-with-cards', '9'] },
     ];
     const paths = listPost.flatMap(post => {
         return locales.map(locale => {

@@ -11276,7 +11276,7 @@ header.masthead .site-heading .h1 {
     to right,
     #0085A1,
     #0085A1 50%,
-    #000 50%
+    #FFFFFF 50%
   );
   background-size: 200% 100%;
   background-position: -100%;
@@ -11308,7 +11308,7 @@ header.masthead .site-heading .h1 {
   width: 100%;
 }
 
-.card-list-post img {
+/* .card-list-post img {
   max-width: 511px !important;
   height: auto;
-}
+} */

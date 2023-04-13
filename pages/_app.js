@@ -11,6 +11,7 @@ import '../styles/loading.css';
 import '../styles/bio.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'flag-icons';
+import '../styles/box-cards.css';
 
 function MyApp({ Component, pageProps, appProps }) {
     useEffect(() => {

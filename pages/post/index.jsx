@@ -18,6 +18,7 @@ class Home extends PureComponent {
 
     async componentDidMount() {
         this.setState({ hasMounted: true, });
+        
     }
 
     render() {
@@ -25,7 +26,7 @@ class Home extends PureComponent {
             <>
                 <div className="mb-4">
                     <div className="container">
-                        <div className="row" id='poastList'>
+                        <div className="row masonry-container" id='poastList'>
                             <List />
                         </div>
                     </div>
