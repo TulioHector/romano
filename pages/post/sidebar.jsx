@@ -21,7 +21,6 @@ class SideBar extends PureComponent {
             const postDb = FirestoreFacade.getInstance().getCountByMonth(2022, language);
             const listPost = await postDb;
             const tagsDb = FirestoreFacade.getInstance().getAllTags();
-
             const listTags = await tagsDb.then((item) => {
                 let tags = [];
                 item.forEach((doc) => {

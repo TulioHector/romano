@@ -72,7 +72,7 @@ class PostService {
         });
 
         const posts = await Promise.all(postsWithTags);
-        
+
 
         return { posts, currentTotal: totalDocs, lastItemList };
     }
@@ -127,32 +127,23 @@ class PostService {
                 }
 
                 const startDate = Timestamp.fromDate(new Date(year, month, 1));
-                const endDate = Timestamp.fromDate(new Date(year, month + 1, 0));
-
+                const endDate = Timestamp.fromDate(this.getLastDayOfMonth(year, month));
                 if (monthsWithPosts.has(month)) {
                     const q = query(postsRef, where("DatePublish", ">=", startDate), where("DatePublish", "<=", endDate));
+                    const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
 
-                    const promise = getDocs(q).then((querySnapshot) => {
-                        const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
+                    const promise = (async (monthName) => {
+                        const querySnapshot = await getDocs(q);
                         const info = {
                             month: monthName,
                             year: year,
                             count: querySnapshot.size,
                         };
                         return info;
-                    });
+                    })(monthName);
 
                     promises.push(promise);
                 }
-                // else {
-                //     const monthName = new Date(year, month).toLocaleString(locale, { month: 'long' });
-                //     const info = {
-                //         month: monthName,
-                //         year: year,
-                //         count: 0,
-                //     };
-                //     promises.push(Promise.resolve(info));
-                // }
             }
 
             const result = await Promise.all(promises);
@@ -202,6 +193,14 @@ class PostService {
         } catch (e) {
             console.error("Error adding document: ", e);
         }
+    }
+
+    //Private methods
+    getLastDayOfMonth(year, month) {
+        // Crea una fecha con el primer día del mes siguiente
+        const nextMonth = new Date(year, month + 1, 1);
+        // Resta un día a la fecha para obtener el último día del mes actual
+        return new Date(nextMonth - 1);
     }
 }
 

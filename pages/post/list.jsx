@@ -100,13 +100,13 @@ class List extends PureComponent {
                                         {item.tags.map((tag, tagIndex) => (
                                             <h6 key={`tag_${tagIndex}`} className="label label-danger">{tag}</h6>
                                         ))}
-                                        <p className="description">{item.Description}</p>
                                     </div>
                                 </div>
                                 <div className="content">
                                     <h4 className="title title-uppercase">
                                         <a href={`${this.state.currentLocale}/${item.url}/${item.id}`}>{item.Title}</a>
                                     </h4>
+                                    <p className="description">{item.Description}</p>
                                 </div>
                                 <div className="filter">
                                 </div>
