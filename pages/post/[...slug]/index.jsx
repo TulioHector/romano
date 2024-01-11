@@ -119,7 +119,6 @@ class Post extends PureComponent {
         try {
             this.setState({ hasMounted: true, });
             const result = await this.getTask();
-            console.log(result);
             let pageConfig = this.context.pageSettings;
             const language = window.navigator.userLanguage || window.navigator.language;
             moment.locale(language);
