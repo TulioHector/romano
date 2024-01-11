@@ -31,6 +31,10 @@ export async function getStaticPaths({ locales }) {
         { slug: ['2023-03-14-API-Gateway', '7'] },
         { slug: ['2023-03-28-deuda-tecnica', '8'] },
         { slug: ['2023-04-13-Agile-discovery-with-cards', '9'] },
+        { slug: ['2023-04-24-evaluacion-riesgos-arquitectura', '10'] },
+        { slug: ['2023-04-18-desacoplamiento-servicios', '11'] },
+        { slug: ['2023-04-21-cohesion-servicios', '12'] },
+        { slug: ['19-12-2023-Construcciones-Estratégicas', '13'] },
     ];
     const paths = listPost.flatMap(post => {
         return locales.map(locale => {
@@ -115,6 +119,7 @@ class Post extends PureComponent {
         try {
             this.setState({ hasMounted: true, });
             const result = await this.getTask();
+            console.log(result);
             let pageConfig = this.context.pageSettings;
             const language = window.navigator.userLanguage || window.navigator.language;
             moment.locale(language);
@@ -140,7 +145,7 @@ class Post extends PureComponent {
                 <>
                     <PageHeader />
                     <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
-                    <article className="mb-4" itemScope itemType='https://schema.org/Article'>
+                    <article className="mb-4" itemScope itemType='https://schema.org/Article' title={this.state.headerTitle} lang="es">
                         <div style={{ display: 'none' }}>
                             <span itemProp="name">{this.context.pageSettings.pageTitle}</span>
                             <span itemProp="description">{this.context.pageSettings.pageSubTitle}</span>

@@ -97,3 +97,8 @@ Si bien no es estrictamente necesario, contar con un equipo interdisciplinario p
 
 - ¿Cómo puedo asegurarme de que el proceso de Agile Discovery con tarjetas sea eficaz?
 Para garantizar la eficacia del proceso de Agile Discovery con tarjetas, es importante que cuentes con un equipo comprometido y con una comunicación clara y efectiva. También es recomendable establecer plazos y objetivos claros, y realizar revisiones periódicas del proceso para evaluar su eficacia y realizar ajustes si es necesario.
+
+
+Si sientes que has extraído algún valor del contenido de este articulo, considera colaborar con la compra de café. ¡Gracias!
+
+[ko-fi](https://ko-fi.com/hectorromano)
