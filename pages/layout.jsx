@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { withRouter } from 'next/router';
 import { PageContextProvider } from '../components/context';
 import LocaleContextProvider from '../components/i18n';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const Navigation = dynamic(() => import('../components/Navigation'));
 const Footer = dynamic(() => import('../components/Footer'));
@@ -31,6 +32,7 @@ class RootLayout extends Component {
           </PageContextProvider>
           <Footer />
         </LocaleContextProvider>
+        <SpeedInsights />
       </>
     )
   }
