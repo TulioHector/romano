@@ -1,6 +1,7 @@
 "use client"
 import { PureComponent } from "react";
 import { withRouter } from 'next/router';
+import Link from 'next/link'
 import { LocaleContext } from '../components/i18n';
 import Typed from "react-typed";
 import moment from 'moment';
@@ -47,7 +48,7 @@ class HeaderTypeToRender extends PureComponent {
                             <h2 className="subheading" itemProp="description">{pageSettings.pageSubTitle}</h2>
                             <span className="meta" itemProp="author">
                                 Posted by&nbsp;
-                                <a href="/bio" itemProp="name">{pageSettings.pageAuthor}&nbsp;</a>
+                                <Link href="/bio" itemProp="name">{pageSettings.pageAuthor}&nbsp;</Link >
                                 <time itemProp="datePublished" dateTime={pageSettings.pageDatePublish}>
                                     {moment(pageSettings.pageDatePublish).format('LL')}
                                 </time>
