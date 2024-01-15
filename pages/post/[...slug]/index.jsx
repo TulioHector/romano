@@ -144,13 +144,7 @@ class Post extends PureComponent {
                 <>
                     <PageHeader />
                     <SeoHeader metatags={this.state.headers} title={this.state.headerTitle} description={this.state.description} />
-                    <article className="mb-4" itemScope itemType='https://schema.org/Article' title={this.state.headerTitle} lang="es">
-                        <div style={{ display: 'none' }}>
-                            <span itemProp="name">{this.context.pageSettings.pageTitle}</span>
-                            <span itemProp="description">{this.context.pageSettings.pageSubTitle}</span>
-                            <span itemProp="datePublished">{this.context.pageSettings.pageDatePublish}</span>
-                        </div>
-
+                    <article className="mb-4" title={this.state.headerTitle} lang="es">
                         <div className="container">
                             <div className="row justify-content-center">
                                 <div itemProp="articleBody" className='col-lg-9'>

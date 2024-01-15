@@ -41,13 +41,15 @@ class HeaderTypeToRender extends PureComponent {
             case 'post':
                 return this.state.hasMounted && (
                     <>
-                        <div className="post-heading">
-                            <h1>{pageSettings.pageTitle}</h1>
-                            <h2 className="subheading">{pageSettings.pageSubTitle}</h2>
-                            <span className="meta">
+                        <div className="post-heading" itemScope itemType='https://schema.org/Article'>
+                            <h1 itemProp="headline">{pageSettings.pageTitle}</h1>
+                            <h2 className="subheading" itemProp="description">{pageSettings.pageSubTitle}</h2>
+                            <span className="meta" itemProp="author">
                                 Posted by&nbsp;
-                                <a href="#!">{pageSettings.pageAuthor}&nbsp;</a>
-                                on&nbsp;{pageSettings.pageDatePublish}
+                                <a href="#!" itemProp="name">{pageSettings.pageAuthor}&nbsp;</a>
+                                <time itemProp="datePublished" dateTime={pageSettings.pageDatePublish}>
+                                    {pageSettings.pageDatePublish}
+                                </time>
                             </span>
                         </div>
                     </>
