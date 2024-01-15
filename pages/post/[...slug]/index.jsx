@@ -1,24 +1,24 @@
 "use client"
 import { PureComponent } from 'react';
-//import dynamic from 'next/dynamic';
+import dynamic from 'next/dynamic';
 import { PageContext, pageHeaderType } from '../../../components/context';
 import FirestoreFacade from '../../../components/db/FirestoreFacade';
 import Loading from '../../../components/Loading';
 import moment from 'moment';
 
-import Markdown from "markdown-to-jsx";
-import Code from "../../../components/Code";
-import PageHeader from '../../../components/PageHeader';
-import SeoHeader from '../../../components/seoHeader';
-import LastPosts from '../recentList';
-import SideBar from '../sidebar';
+// import Markdown from "markdown-to-jsx";
+// import Code from "../../../components/Code";
+// import PageHeader from '../../../components/PageHeader';
+// import SeoHeader from '../../../components/seoHeader';
+// import LastPosts from '../recentList';
+// import SideBar from '../sidebar';
 
-// const Markdown = dynamic(() => import("markdown-to-jsx"), {ssr: false});
-// const Code = dynamic(() => import("../../../components/Code"), {ssr: false});
-// const PageHeader = dynamic(() => import('../../../components/PageHeader'), {ssr: false});
-// const SeoHeader = dynamic(() => import('../../../components/seoHeader'), {ssr: false});
-// const LastPosts = dynamic(() => import('../recentList'), {ssr: false});
-// const SideBar = dynamic(() => import('../sidebar'), {ssr: false});
+const Markdown = dynamic(() => import("markdown-to-jsx"), {ssr: false});
+const Code = dynamic(() => import("../../../components/Code"), {ssr: false});
+const PageHeader = dynamic(() => import('../../../components/PageHeader'), {ssr: false});
+const SeoHeader = dynamic(() => import('../../../components/seoHeader'), {ssr: false});
+const LastPosts = dynamic(() => import('../recentList'), {ssr: false});
+const SideBar = dynamic(() => import('../sidebar'), {ssr: false});
 
 export async function getStaticProps({ params }) {
     const { slug } = params;
