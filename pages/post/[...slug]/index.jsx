@@ -31,7 +31,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths({ locales }) {
     const listPost = [
         { slug: ['2022-12-01-ADR-architecture-decision-records', '3'] },
-        { slug: ['tutorial1', '1'] },
+        //{ slug: ['tutorial1', '1'] },
         { slug: ['2022-10-20-arquitectura-evolutiva', '2'] },
         { slug: ['2023-01-05-diagrams-arquitectura', '4'] },
         { slug: ['2023-01-06-pensar-como-arquitecto', '5'] },
@@ -45,7 +45,7 @@ export async function getStaticPaths({ locales }) {
     ];
     const paths = listPost.flatMap(post => {
         return locales.map(locale => {
-            console.log("a post->", post);
+            //console.log("a post->", post);
             return {
                 params: post,
                 locale: locale,
@@ -136,7 +136,7 @@ class Post extends PureComponent {
                 pageSubTitle: result.Description,
                 headerType: pageHeaderType.Post,
                 pageAuthor: result.Author,
-                pageDatePublish: moment(result.DatePublish.toDate()).format('LL'),
+                pageDatePublish: moment(result.DatePublish.toDate()).format('YYYY-MM-DD'),
             }
 
             this.context.setPageSettings(settings);

@@ -2,7 +2,8 @@
 import { PureComponent } from "react";
 import { withRouter } from 'next/router';
 import { LocaleContext } from '../components/i18n';
-import Typed from "react-typed"
+import Typed from "react-typed";
+import moment from 'moment';
 
 class HeaderTypeToRender extends PureComponent {
     typeHeader = '';
@@ -41,14 +42,14 @@ class HeaderTypeToRender extends PureComponent {
             case 'post':
                 return this.state.hasMounted && (
                     <>
-                        <div className="post-heading" itemScope itemType='https://schema.org/Article'>
+                        <div className="post-heading">
                             <h1 itemProp="headline">{pageSettings.pageTitle}</h1>
                             <h2 className="subheading" itemProp="description">{pageSettings.pageSubTitle}</h2>
                             <span className="meta" itemProp="author">
                                 Posted by&nbsp;
-                                <a href="#!" itemProp="name">{pageSettings.pageAuthor}&nbsp;</a>
+                                <a href="/bio" itemProp="name">{pageSettings.pageAuthor}&nbsp;</a>
                                 <time itemProp="datePublished" dateTime={pageSettings.pageDatePublish}>
-                                    {pageSettings.pageDatePublish}
+                                    {moment(pageSettings.pageDatePublish).format('LL')}
                                 </time>
                             </span>
                         </div>
