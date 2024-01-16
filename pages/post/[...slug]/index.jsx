@@ -136,7 +136,7 @@ class Post extends PureComponent {
                 pageSubTitle: result.Description,
                 headerType: pageHeaderType.Post,
                 pageAuthor: result.Author,
-                pageDatePublish: moment(result.DatePublish.toDate()).format('YYYY-MM-DDThh:mm:ss'),
+                pageDatePublish: moment(result.DatePublish.toDate()).format('YYYY-MM-DDThh:mm:ssZ'),
             }
 
             this.context.setPageSettings(settings);

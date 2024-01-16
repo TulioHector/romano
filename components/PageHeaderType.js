@@ -46,9 +46,11 @@ class HeaderTypeToRender extends PureComponent {
                         <div className="post-heading">
                             <h1 itemProp="headline">{pageSettings.pageTitle}</h1>
                             <h2 className="subheading" itemProp="description">{pageSettings.pageSubTitle}</h2>
-                            <span className="meta" itemProp="author">
+                            <span className="meta" itemProp="author" itemScope itemType="https://schema.org/Person">
                                 Posted by&nbsp;
-                                <Link href="/bio" itemProp="name">{pageSettings.pageAuthor}&nbsp;</Link >
+                                <Link href="/bio" itemProp="url">
+                                    <span itemProp="name">{pageSettings.pageAuthor}&nbsp;</span>
+                                </Link >
                                 <time itemProp="datePublished" dateTime={pageSettings.pageDatePublish}>
                                     {moment(pageSettings.pageDatePublish).format('LL')}
                                 </time>
