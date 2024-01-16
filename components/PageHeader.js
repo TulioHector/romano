@@ -24,7 +24,6 @@ class PageHeader extends PureComponent {
                 <PageContext.Consumer>
                     {
                         (value) => {
-                            console.log(value.pageSettings);
                             if(value.pageSettings.headerType == 'post') {
                                 return (
                                     <>
