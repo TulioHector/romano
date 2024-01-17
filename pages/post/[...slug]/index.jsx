@@ -16,7 +16,7 @@ const SideBar = dynamic(() => import('../sidebar'), {ssr: false});
 export async function getStaticProps({ params }) {
     const { slug } = params;
     return {
-        revalidate: 1,
+        revalidate: 7200,
         props: { slug },
     };
 }
