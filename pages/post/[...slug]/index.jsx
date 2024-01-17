@@ -6,13 +6,6 @@ import FirestoreFacade from '../../../components/db/FirestoreFacade';
 import Loading from '../../../components/Loading';
 import moment from 'moment';
 
-// import Markdown from "markdown-to-jsx";
-// import Code from "../../../components/Code";
-// import PageHeader from '../../../components/PageHeader';
-// import SeoHeader from '../../../components/seoHeader';
-// import LastPosts from '../recentList';
-// import SideBar from '../sidebar';
-
 const Markdown = dynamic(() => import("markdown-to-jsx"), {ssr: false});
 const Code = dynamic(() => import("../../../components/Code"), {ssr: false});
 const PageHeader = dynamic(() => import('../../../components/PageHeader'), {ssr: false});
@@ -31,7 +24,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths({ locales }) {
     const listPost = [
         { slug: ['2022-12-01-ADR-architecture-decision-records', '3'] },
-        //{ slug: ['tutorial1', '1'] },
+        { slug: ['tutorial1', '1'] },
         { slug: ['2022-10-20-arquitectura-evolutiva', '2'] },
         { slug: ['2023-01-05-diagrams-arquitectura', '4'] },
         { slug: ['2023-01-06-pensar-como-arquitecto', '5'] },
